@@ -1,0 +1,4 @@
+@mixin font-family($value: default) {
+    $font: get(font $value);
+    font-family: get($font fontstack);
+}

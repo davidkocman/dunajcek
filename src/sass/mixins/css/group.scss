@@ -1,0 +1,13 @@
+@mixin css-group($group, $value) {
+    @if type-of($value) == map {
+        @each $property, $val in $value {
+            @if $property == value {
+                #{$group}: $val;
+            } @else {
+                #{$group+'-'+$property}: $val;
+            }
+        }
+    } @else {
+        #{$group}: $value;
+    }
+}

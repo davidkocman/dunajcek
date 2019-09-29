@@ -1,0 +1,43 @@
+.content {
+	@include margin(80px _ _ _);
+	@include padding(54px 4%);
+	@include size(50% _);
+	float: right;
+	.intro {
+		.h {
+			@include font((
+				appearance: regular,
+				family: script,
+				size: 16px 14px,
+			));
+			letter-spacing: 0;
+			text-transform: uppercase;
+			color: #162848;
+			span {
+				@include font((
+					appearance: bold,
+					family: script,
+				));
+			}
+		}
+		.logo {
+			@include margin(_ _ 62px _);
+		}
+		p {
+			@include margin(_ _ 20px _);
+			@include font((
+				appearance: regular,
+				family: script,
+				size: 16px 32px
+			));
+			color: color(regular);
+			letter-spacing: 0;
+			&.bold {
+				@include font((
+					appearance: bold,
+				));
+				color: color(bold);
+			}
+		}
+	}
+}

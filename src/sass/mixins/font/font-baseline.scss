@@ -1,0 +1,48 @@
+@mixin font-baseline($value) {
+    $appearance: if(get($value appearance), get($value appearance), default);
+    $family: if(get($value family), get($value family), default);
+    $offset: if(get($value offset), get($value offset), 0);
+    $position: if(get($value position), get($value position), relative);
+    $selector: get($value selector);
+    $size: if(get($value size), get($value size), 1);
+
+    $font: font($family);
+    $subfont: get($font appearance $appearance);
+    $baseline-offset: if(get($subfont baseline offset), get($subfont baseline offset), get($font baseline offset));
+
+    @if not is-_($position) {
+        @include selector($selector) {
+            position: $position;
+        }
+    }
+
+  $offsets: map($offset);
+  $sizes: map($size);
+  @each $breakpoint in map-keys($sizes) {
+    $offset: get($offsets $breakpoint);
+    @if $offset {
+            @if is($offset, unitless) {
+                $offset: r($offset);
+            } @else if is($offset, px) {
+                $offset: rem($offset);
+            } @else if not is($offset, rem) {
+                @error "Invalid offset";
+            }
+    }
+    $size: get($sizes $breakpoint);
+        $font-size: font-size(first($size));
+        $line-height: line-height(if(is($size, list), nth($size, 2), null), $font-size);
+
+        $counteract: $font-size * abs($baseline-offset);
+        $counteract: $counteract + (($line-height - $font-size) / 2);
+    @if $offset {
+            $counteract: $counteract + $offset;
+        }
+
+        @include bp($breakpoint) {
+            @include selector($selector) {
+                top: $counteract;
+            }
+        }
+    }
+}

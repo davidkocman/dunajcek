@@ -1,0 +1,9 @@
+/*
+ * Returns custom value from variables
+ */
+@function custom($value) {
+	@if get(custom $value) {
+		@return get(custom $value);
+	}
+	@error "Custom value '#{$value}' not found";
+}

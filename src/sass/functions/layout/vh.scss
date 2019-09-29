@@ -1,0 +1,32 @@
+/*
+ * Convert input value to vh
+ *
+ * 1. Convert unitless value to vh
+ * 2. Get percentage and convert it to vh
+ *
+ * Example usage:
+ * width: vh(3 of 12);
+ * width: vh(3 / 12);
+ * width: vh(25);
+ * Outputs:
+ * width: 25vh;
+ */
+@function vh($value: 100) {
+    @if 
+        length($value) == 1 and
+        type-of($value) == number and
+        unitless($value)
+    {
+        @return $value * 1vh; /* 1 */
+    } @else if
+        length($value) == 3 and
+        type-of(first($value)) == number and
+        type-of(last($value)) == number and
+        unitless(first($value)) and
+        unitless(last($value)) and
+        (nth($value, 2) == 'of' or nth($value, 2) == '/')
+    {
+        @return strip-unit(p($value)) * 1vh; /* 2 */
+    }
+    @error "Invalid value '#{$value}'";
+}

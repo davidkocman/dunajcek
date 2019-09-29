@@ -1,0 +1,89 @@
+/*
+Examples:
+@include position(0);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+@include position(0 1rem);
+    top: 0;
+    right: 1rem;
+    bottom: 0;
+    left: 1rem;
+@include position(0 1rem _);
+    top: 0;
+    right: 1rem;
+    left: 1rem;
+@include position(0 _ _ 1rem);
+    top: 0;
+    left: 1rem;
+*/
+@mixin position($raw-value: _, $position: null, $z-index: null) {
+    $value: ();
+    @each $val in list($raw-value) {
+        @if is-unitless($val) {
+            $val: r($val);
+        }
+        @if is-px($val) and $val >= get(px-to-rem-limit) {
+            $val: rem($val);
+        }
+        $value: append($value, $val);
+    }
+    @if length($value) == 1 {
+        $value: first($value);
+        @if not is-_($value) {
+            top: $value;
+            right: $value;
+            bottom: $value;
+            left: $value;
+        }
+    } @else if length($value) == 2 {
+        $top-bottom: nth($value, 1);
+        $right-left: nth($value, 2);
+        @if not is-_($top-bottom) {
+            top: $top-bottom;
+            bottom: $top-bottom;
+        }
+        @if not is-_($right-left) {
+            right: $right-left;
+            left: $right-left;
+        }
+    } @else if length($value) == 3 {
+        $top: nth($value, 1);
+        $right-left: nth($value, 2);
+        $bottom: nth($value, 3);
+        @if not is-_($top) {
+            top: $top;
+        }
+        @if not is-_($right-left) {
+            right: $right-left;
+            left: $right-left;
+        }
+        @if not is-_($bottom) {
+            bottom: $bottom;
+        }
+    } @else if length($value) == 4 {
+        $top: nth($value, 1);
+        $right: nth($value, 2);
+        $bottom: nth($value, 3);
+        $left: nth($value, 4);
+        @if not is-_($top) {
+            top: $top;
+        }
+        @if not is-_($right) {
+            right: $right;
+        }
+        @if not is-_($bottom) {
+            bottom: $bottom;
+        }
+        @if not is-_($left) {
+            left: $left;
+        }
+    }
+    @if $position {
+        position: $position;
+    }
+    @if $z-index {
+        z-index: $z-index;
+    }
+}

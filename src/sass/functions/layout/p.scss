@@ -1,0 +1,34 @@
+/*
+ * Convert input value to percentage
+ *
+ * 1. Convert unitless value to %
+ * 2. Return percentage value without processing
+ * 3. Get percentage from 2 input values
+ *
+ * Example usage:
+ * width: p(25);
+ * width: p(25%);
+ * width: p(3 / 12);
+ * width: p(3 of 12);
+ * Outputs:
+ * width: 25%;
+ */
+@function p($value: 100) {
+    @if is($value, length, 1) {
+        @if is($value, number) and is($value, unitless) {
+            @return percentage($value);
+        } @else if is($value, percentage) {
+            @return $value;
+        }
+    } @else if
+        is($value, length, 3) and
+        is(first($value), number) and
+        is(last($value), number) and
+        is(first($value), unitless) and
+        is(last($value), unitless) and
+        (nth($value, 2) == 'of' or nth($value, 2) == '/')
+    {
+        @return percentage(first($value) / last($value));
+    }
+    @error "Invalid value '#{$value}'";
+}

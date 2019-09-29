@@ -1,0 +1,15 @@
+/*
+ * Convert yes/no to boolean
+ */
+@function bool($value) {
+	@if $value == yes or $value == y {
+		@return true;
+	}
+	@if $value == no or is-_($value) {
+		@return false;
+	}
+	@if $value {
+		@return true;
+	}
+	@return false;
+}

@@ -1,0 +1,3 @@
+@mixin border($value) {
+    @include css-group(border, $value);
+}

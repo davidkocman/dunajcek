@@ -1,0 +1,5 @@
+@mixin break-inside($value: auto) {
+	-webkit-column-break-inside: $value;
+	page-break-inside: $value;
+	break-inside: $value;
+}

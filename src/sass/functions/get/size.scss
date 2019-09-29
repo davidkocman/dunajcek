@@ -1,0 +1,7 @@
+@function size($size) {
+    $query: join(size, $size);
+    @if get($query) {
+        @return get($query);
+    }
+    @error "Size '#{$size}' not found"
+}

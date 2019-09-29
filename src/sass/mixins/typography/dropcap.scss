@@ -1,0 +1,171 @@
+@mixin dropcap(
+        $dropcap: auto,
+        $parent: default,
+        $item: '&::first-letter'
+    ) {
+    @if $dropcap == auto {
+        $dropcap: get(dropcap);
+    } @else {
+        $dropcap: map-extend(get(dropcap), $dropcap, ());
+    }
+    $parent-default: (
+        0: (
+            font: body,
+            size: 0,
+            ratio: auto,
+        ),
+    );
+    @if $parent == default {
+        $parent: $parent-default;
+    } @else {
+        $parent: map-extend($parent-default, $parent, ());
+    }
+    #{$item} {
+        text-rendering: geometricPrecision;
+        float: left;
+        line-height: 0;
+        $last-dropcap-font: null;
+        $last-dropcap-font-size: null;
+        $last-dropcap-size: null;
+        $last-dropcap-line-height: null;
+        $last-dropcap-background: null;
+        $last-dropcap-color: null;
+        $last-dropcap-margin: null;
+        $last-dropcap-padding: null;
+
+        $last-parent-font: null;
+        $last-parent-font-size: null;
+        $last-parent-size: null;
+        $last-parent-ratio-handle: null;
+        $last-parent-ratio: null;
+        $last-parent-scale: null;
+        @each $breakpoint in map-keys(get(breakpoint)) {
+            //* PARENT VARIABLES
+            $parent-size: get($parent $breakpoint size);
+            @if $parent-size {
+                @if $parent-size != $last-parent-size {
+                    $last-parent-size: $parent-size;
+                }
+            } @else {
+                $parent-size: $last-parent-size;
+            }
+            $parent-ratio-handle: get($parent $breakpoint ratio);
+            @if $parent-ratio-handle {
+                @if $parent-ratio-handle != $last-parent-ratio-handle {
+                    $last-parent-ratio-handle: $parent-ratio-handle;
+                }
+            } @else {
+                $parent-ratio-handle: $last-parent-ratio-handle;
+            }
+            @if $parent-ratio-handle == auto {
+                $parent-scale: get(config scale $breakpoint);
+                @if $parent-scale {
+                    @if $parent-scale != $last-parent-scale {
+                        $last-parent-scale: $parent-scale;
+                    } @else {
+                        $parent-scale: $last-parent-scale;
+                    }
+                } @else {
+                    $parent-scale: $last-parent-scale;
+                }
+                $parent-ratio-handle: $parent-scale;
+            }
+            $parent-ratio: get(scale $parent-ratio-handle);
+            $parent-font: get($parent $breakpoint font);
+            @if $parent-font {
+                @if $parent-font != $last-parent-font {
+                    $last-parent-font: $parent-font;
+                } @else {
+                    $parent-font: $last-parent-font;
+                }
+            } @else {
+                $parent-font: $last-parent-font;
+            }
+            $parent-font-size: null;
+                $parent-font-size: font-size($parent-size);
+            @if $parent-font-size != $last-parent-font-size {
+                $last-parent-font-size: $parent-font-size;
+            } @else {
+                $parent-font-size: $last-parent-font-size;
+            }
+            // $parent-cap-height: $parent-font-size * get(font $parent-font baseline cap-height);
+            // $parent-line-height: lines-for-font-size($parent-font-size) * rem(config(base-line-height));
+            //* DROPCAP VARIABLES
+            $dropcap-font: get($dropcap $breakpoint font);
+            @if $dropcap-font {
+                @if $dropcap-font != $last-dropcap-font {
+                    $last-dropcap-font: $dropcap-font;
+                } @else {
+                    $dropcap-font: $last-dropcap-font;
+                }
+            } @else {
+                $dropcap-font: $last-dropcap-font;
+            }
+            $dropcap-fontstack: get(font $dropcap-font fontstack);
+            @if get(font $dropcap-fontstack) {
+                $dropcap-font: $dropcap-fontstack;
+            }
+            $dropcap-offset-top: get(font $dropcap-font baseline offset-top);
+            $dropcap-offset-bottom: get(font $dropcap-font baseline offset-bottom);
+            $dropcap-size: get($dropcap $breakpoint size);
+            @if $dropcap-size {
+                @if $dropcap-size != $last-dropcap-size {
+                    $last-dropcap-size: $dropcap-size;
+                }
+            } @else {
+                $dropcap-size: $last-dropcap-size;
+            }
+            $dropcap-background: get($dropcap $breakpoint background);
+            $dropcap-color: get($dropcap $breakpoint color);
+            $dropcap-margin: get($dropcap $breakpoint margin);
+            $dropcap-padding: get($dropcap $breakpoint padding);
+            // $dropcap-line-height: $dropcap-size * $parent-line-height;
+        //  $dropcap-cap-height: $parent-line-height * ($dropcap-size - 1) + $parent-cap-height;
+            // $dropcap-font-size: $dropcap-cap-height / get(font $dropcap-font baseline cap-height);
+            //* OUTPUT
+            @include bp($breakpoint) {
+                // TMP
+                // @include font((
+                //  family: script,
+                // ));
+                font-size: 5.5em;
+                @include padding(1.75 .5 1.25 0);
+                // @include font-feature-settings("swsh" 1);
+
+                //* font-size
+                // @if $dropcap-font-size != $last-dropcap-font-size {
+                //  $last-dropcap-font-size: $dropcap-font-size;
+                //  font-size: $dropcap-font-size;
+                // }
+                //* line-height
+                // @if $dropcap-line-height != $last-dropcap-line-height {
+                //  $last-dropcap-line-height: $dropcap-line-height;
+                //  padding-bottom: $dropcap-line-height * $dropcap-offset-top;
+                //  padding-top: $dropcap-line-height * $dropcap-offset-bottom;
+                // }
+                //* font
+                // @if ($dropcap-font != $parent-font) and ($dropcap-font != $last-dropcap-font) {
+                //  $last-dropcap-font: $dropcap-font;
+                //  @include font($dropcap-font);
+                // }
+                //* other styles
+                // @if $dropcap-background != $last-dropcap-background {
+                //  $last-dropcap-background: $dropcap-background;
+                //  background: background($dropcap-background);
+                // }
+                // @if $dropcap-color != $last-dropcap-color {
+                //  $last-dropcap-color: $dropcap-color;
+                //  color: color($dropcap-color);
+                // }
+                // @if $dropcap-margin != $last-dropcap-margin {
+                //  $last-dropcap-margin: $dropcap-margin;
+                //  @include margin($dropcap-margin);
+                // }
+                // @if $dropcap-padding != $last-dropcap-padding {
+                //  $last-dropcap-padding: $dropcap-padding;
+                //  @include padding($dropcap-padding);
+                // }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+/*
+ * Returns ratio for a breakpoint from variables.
+ *
+ * 1. If the ratio is not defined for this exact breakpoint.
+ * 2. Get the ratio inherited from the nearest lower resolution breakpoint.
+ */
+@function resp-ratio($breakpoint: 0) {
+	@if not get(resp-ratio $breakpoint) { /* 1 */
+		@while not get(resp-ratio $breakpoint) {
+			$breakpoint: $breakpoint - 1; /* 2 */
+		}
+	}
+	@return get(resp-ratio $breakpoint);
+}

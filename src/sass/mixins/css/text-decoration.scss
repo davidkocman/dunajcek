@@ -1,0 +1,13 @@
+@mixin text-decoration($value) {
+    @if type-of($value) == map {
+        @each $property, $val in $value {
+            @if $property == value {
+                text-decoration: $val;
+            } @else {
+                @include prefix(#{'text-decoration-'+$property}, $val, get(prefix text-decoration));
+            }
+        }
+    } @else {
+        text-decoration: $value;
+    }
+}

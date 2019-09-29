@@ -1,0 +1,55 @@
+@mixin flexgrid-margin($margin: auto, $item: '.item') {
+    @if $margin == auto {
+        @each $breakpoint in map-keys(map-get($variables, gap)) {
+            @include responsive-output($breakpoint) {
+                margin: rhythm(get(gap $breakpoint) * -1) rhythm(get(gap $breakpoint) * -.5) 0;
+            }
+        }
+        #{$item} {
+            @each $breakpoint in map-keys(map-get($variables, gap)) {
+                @include responsive-output($breakpoint) {
+                    margin: rhythm(get(gap $breakpoint)) rhythm(get(gap $breakpoint) * .5) 0;
+                }
+            }
+        }
+    } @else if length($margin) == 2 {
+    // different horizontal and vertical margin
+        $margin-y: first($margin);
+        $margin-x: last($margin);
+        // convert rhythm units
+        @if type-of($margin-y) == number {
+            $margin-y: rhythm($margin-y);
+        }
+        @if type-of($margin-x) == number {
+            $margin-x: rhythm($margin-x);
+        }
+        // output margins
+        @if ($margin-y > 0) and ($margin-x > 0) {
+            margin: ($margin-y * -1) ($margin-x * -.5) 0;
+            #{$item} {
+                margin: $margin-y ($margin-x * .5) 0;
+            }
+        } @else if ($margin-y > 0) {
+            margin-top: $margin-y * -1;
+            #{$item} {
+                margin-top: $margin-y;
+            }
+        } @else if ($margin-x > 0) {
+            margin: 0 ($margin-x * -.5);
+            #{$item} {
+                margin: 0 ($margin-x * .5);
+            }
+        }
+    } @else {
+    // specific margin size
+        // convert rhythm units
+        @if type-of($margin) == number {
+            $margin: rhythm($margin)
+        }
+        // output margins
+        margin: ($margin * -1) ($margin * -.5) 0;
+        #{$item} {
+            margin: ($margin) ($margin * .5) 0;
+        }
+    }
+}

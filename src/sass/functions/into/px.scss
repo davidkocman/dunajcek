@@ -1,0 +1,29 @@
+/*
+Converts value to px
+Examples:
+    px(16px)
+        returns 16px
+    px(1em), px(1rem)
+        returns base font size in px
+    px(1)
+        returns base line-height(rhythm) in px
+ */
+@function px($value) {
+    @if is($value, px) {
+        @return $value;
+    } @else if is($value, em) or is($value, rem) {
+        $base-font-size: base(font-size);
+        @if is-not($base-font-size, px) {
+            $base-font-size: $base-font-size * 16;
+        }
+        @return strip-unit($value) * strip-unit($base-font-size) * 1px;
+    } @else if is($value, unitless) {
+        $base-line-height: base(line-height);
+        @if is-not($base-line-height, px) {
+            $base-line-height: $base-line-height * 16;
+        }
+        @return $value * strip-unit($base-line-height) * 1px;
+    } @else {
+        @error "Invalid input unit #{type-of($value)} for px() function.";
+    }
+}

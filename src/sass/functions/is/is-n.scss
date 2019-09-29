@@ -1,0 +1,6 @@
+@function is-n($value) {
+    @if $value == n {
+        @return true;
+    }
+    @return false;
+}

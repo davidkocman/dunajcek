@@ -1,0 +1,13 @@
+@mixin background-color($input-background-color, $color: auto) {
+    $background-color: color($input-background-color);
+    @if not $background-color {
+        @warn "Color '#{$input-background-color}' not found.";
+    } @else {
+        background-color: $background-color;
+        @if $color == auto {
+            color: contrasting-color($background-color);
+        } @else if $color != n {
+            color: color($color);
+        }
+    }
+}

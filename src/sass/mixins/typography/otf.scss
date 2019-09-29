@@ -1,0 +1,17 @@
+@mixin otf($override: null) {
+	$otf: get(otf);
+	@if $override {
+		@if type-of($override) == string {
+			$override: get(otf-preset $override);
+		}
+		$otf: map-merge($otf, $override);
+	}
+	$value: '';
+	@each $feature in map-keys($otf) {
+		@if get($otf $feature) {
+			$value: $value + ',"#{$feature}" ' + get($otf $feature);
+		}
+	}
+	$value: str-slice($value, 2);
+	@include font-feature-settings(unquote($value));
+}

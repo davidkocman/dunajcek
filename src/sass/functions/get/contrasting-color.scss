@@ -1,0 +1,10 @@
+/*
+ * Returns white or black color contrasting to input color
+ */
+@function contrasting-color($value) {
+    @return if(
+		lightness(color($value)) < 50%,
+			color(white),
+			color(black)
+	);
+}

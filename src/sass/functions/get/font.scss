@@ -1,0 +1,10 @@
+@function font($font) {
+    @if not $font {
+        $font: default;
+    }
+    $query: join(font, $font);
+    @if get($query) {
+        @return get($query);
+    }
+    @error "Font '#{$font}' not found";
+}

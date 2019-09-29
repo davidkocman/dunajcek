@@ -1,0 +1,6 @@
+/*
+ * Converts input value to a map.
+ */
+@function map($value) {
+    @return if(type-of($value) != map, (0: $value), $value);
+}

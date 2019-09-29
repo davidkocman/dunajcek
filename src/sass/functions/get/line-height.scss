@@ -1,0 +1,20 @@
+@function line-height($line-height: 1, $font-size: 1) {
+    @if 0 == $font-size {
+        @return 0;
+    }
+    @if $line-height {
+        @if is($line-height, number) {
+            @if is($line-height, unitless) {
+                @return r($line-height);
+            }
+            @if is($line-height, px) {
+                @return rem($line-height);
+            }
+        }
+        @if is-_($line-height) {
+            @return null;
+        }
+        @return $line-height;
+    }
+    @return r(lines-for-font-size(font-size($font-size)));
+}

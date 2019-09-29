@@ -1,0 +1,3 @@
+@mixin outline($value) {
+    @include css-group(outline, $value);
+}

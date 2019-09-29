@@ -1,0 +1,31 @@
+@mixin font-face {
+	@each $item in get(font) {
+		$source: get($item);
+		$file: get($source source);
+		$style: get($source style);
+		$weight: get($source weight);
+		@if $file and $style and $weight {
+			@font-face {
+				font-family: string(first(get(font nth($item, 2) fontstack)));
+				src: asset(font, '#{$file}.eot');
+				src: asset(font, '#{$file}.eot?#iefix') format('embedded-opentype'),
+					asset(font, '#{$file}.woff') format('woff'),
+					asset(font, '#{$file}.ttf')  format('truetype'),
+					asset(font, '#{$file}.svg##{$file}') format('svg');
+				font-weight: $weight;
+				font-style: $style;
+			}
+		}
+	}
+	$iconfont: get(font icon);
+	@font-face {
+		font-family: string(get($iconfont fontstack));
+		src: asset(font, '#{get($iconfont source)}.eot');
+		src: asset(font, '#{get($iconfont source)}.eot?#iefix') format('embedded-opentype'),
+			asset(font, '#{get($iconfont source)}.woff') format('woff'),
+			asset(font, '#{get($iconfont source)}.ttf')  format('truetype'),
+			asset(font, '#{get($iconfont source)}.svg##{get($iconfont source)}') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+}

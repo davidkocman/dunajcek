@@ -1,0 +1,6 @@
+/*
+ * Returns an asset url.
+ */
+@function asset($type, $asset) {
+    @return url(get(asset base)+'/'+get(asset $type)+'/'+$asset);
+}

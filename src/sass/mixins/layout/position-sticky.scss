@@ -1,0 +1,4 @@
+@mixin sticky($value: _, $z-index: null) {
+    position: -webkit-sticky;
+    @include position($value, sticky, $z-index);
+}

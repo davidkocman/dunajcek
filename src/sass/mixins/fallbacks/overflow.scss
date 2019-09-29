@@ -1,0 +1,8 @@
+@mixin overflow($value: xy) {
+    @if $value == xy {
+        overflow: auto;
+    } @else {
+        overflow-#{$value}: auto;
+    }
+    -webkit-overflow-scrolling: touch;
+}

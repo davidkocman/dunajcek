@@ -1,0 +1,12 @@
+/* usage:
+@include ellipsis(n)
+*/
+@mixin ellipsis($line-clamp: 3, $line-height: rem(24px)) {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line-clamp;
+    display: block;
+    display: -webkit-box;
+    max-height: $line-clamp * $line-height;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

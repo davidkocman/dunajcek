@@ -1,0 +1,6 @@
+@function is-_($value) {
+    @if $value == _ {
+        @return true;
+    }
+    @return false;
+}

@@ -1,0 +1,3 @@
+@mixin absolute($value: _, $z-index: null) {
+    @include position($value, absolute, $z-index);
+}

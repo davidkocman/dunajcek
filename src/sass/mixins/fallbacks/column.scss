@@ -1,0 +1,5 @@
+@mixin column($properties) {
+	@each $property, $value in $properties {
+		@include prefix(#{'column-'+$property}, $value, get(prefix column));
+	}
+}

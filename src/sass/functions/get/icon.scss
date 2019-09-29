@@ -1,0 +1,11 @@
+/*
+ * Returns icon from variables.
+ * 1. Fallback is an empty string.
+ */
+@function icon($icon) {
+    @if get(icon $icon) {
+    	@return get(icon $icon);
+    }
+    @warn 'Icon "#{$icon}" not found.';
+    @return ''; /* 1 */
+}

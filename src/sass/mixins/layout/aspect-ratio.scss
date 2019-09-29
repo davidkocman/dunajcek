@@ -1,0 +1,12 @@
+@mixin aspect-ratio($percentual-height, $element: '.element') {
+	position: relative;
+	vertical-align: top;
+	&::before { 
+        content: '';
+        display: block;            
+		padding-top: $percentual-height; 
+	}
+	#{$element} {
+        @include position(0, absolute);
+	}
+}

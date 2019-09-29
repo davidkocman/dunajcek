@@ -1,0 +1,22 @@
+{
+	"name": "Dunajček",
+	"short_name": "dunajcek",
+	"start_url": "/",
+	"orientation": "portrait-primary",
+	"lang": "sk",
+	"description": "Súkromná materská škôlka",
+	"icons": [{
+			"src": "images/favicons/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "images/favicons/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	],
+	"theme_color": "#f8fbff",
+	"background_color": "#f8fbff",
+	"display": "browser"
+}

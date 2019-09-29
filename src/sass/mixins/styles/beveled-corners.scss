@@ -1,0 +1,10 @@
+@mixin beveled-corners($bg: transparent, $radius: rhythm(1)) {
+	background: $bg;
+	background: 
+		linear-gradient(135deg, transparent $radius, $bg 0) top left,
+		linear-gradient(225deg, transparent $radius, $bg 0) top right,
+		linear-gradient(-45deg, transparent $radius, $bg 0) bottom right,
+		linear-gradient(45deg, transparent $radius, $bg 0) bottom left;
+	background-size: 50% 50%;
+	background-repeat: no-repeat;
+}

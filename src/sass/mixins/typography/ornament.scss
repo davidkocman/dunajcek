@@ -1,0 +1,15 @@
+@mixin ornament($value, $fallback: false) {
+    @include font-feature-settings("ornm" 1);
+    //* convert to string and replace space with &nbsp;
+    // $value: str-replace(to-string($value), ' ', '\A0');
+    $value: str-replace(string($value), ' ', char(nbsp));
+    content: "#{$value}";
+    font-variant-alternates: ornaments(1);
+    .no-otf & {
+        @if $fallback != false {
+            content: to-string($fallback);
+        } @else {
+            content: none;
+        }
+    }
+}

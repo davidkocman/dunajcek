@@ -1,0 +1,44 @@
+$site-variables: (
+
+	color: (
+		background: 	#f8fbff,
+		bold:			#162848,
+		regular:		#23344e,
+		svg: 			#292c31,
+		border:			#ef5350,
+	),
+
+	font: (
+		script: (
+			fontstack: ('Titillium Web', sans-serif),
+			appearance: (
+				default: font script style regular,
+				regular: (
+					style: normal,
+					weight: 400,
+				),
+				bold: (
+					style: normal,
+					weight: 700,
+					),
+				bolder: (
+					style: normal,
+					weight: 900,
+				),
+			),
+		),
+
+		body: font sans-serif,
+		heading: font sans-serif,
+	),
+
+	min-line-height: 1.2,
+	size: (
+		gallery-limit: 100rem,
+		header: (
+			0: 3rem,
+			8: 6rem,
+		),
+		layout-limit: 1140px,
+	),
+);

@@ -1,0 +1,6 @@
+/*
+ * Returns an image asset url.
+ */
+@function image($image) {
+    @return asset(image, $image);
+}

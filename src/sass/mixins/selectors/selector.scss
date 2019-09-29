@@ -1,0 +1,9 @@
+@mixin selector($selector) {
+    @if $selector {
+        #{$selector} {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}

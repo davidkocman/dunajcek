@@ -1,0 +1,14 @@
+@mixin font-appearance($values) {
+    $font-handle: default;
+    $appearance-handle: default;
+    @if get($values family) {
+        $font-handle: get($values family);
+    }
+    @if get($values appearance) {
+        $appearance-handle: get($values appearance);
+    }
+    $font: get(font $font-handle);
+    $appearance: get($font appearance $appearance-handle);
+    font-weight: get($appearance weight);
+    font-style: get($appearance style);
+}

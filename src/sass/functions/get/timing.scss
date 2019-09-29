@@ -1,0 +1,7 @@
+@function timing($timing) {
+    $query: join(timing, $timing);
+    @if get($query) {
+        @return get($query);
+    }
+    @error "Timing '#{$timing}' not found";
+}

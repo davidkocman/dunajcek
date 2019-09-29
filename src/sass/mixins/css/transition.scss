@@ -1,0 +1,3 @@
+@mixin transition($value, $important: null) {
+    @include css-group(transition, $value);
+}

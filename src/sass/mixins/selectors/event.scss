@@ -1,0 +1,9 @@
+@mixin event($events: focus hover) {
+    $selector: ();
+    @each $event in $events {
+        $selector: append($selector, '&:#{$event}', comma);
+    }
+	#{string($selector)} {
+		@content;
+	}
+}

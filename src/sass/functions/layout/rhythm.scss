@@ -1,0 +1,22 @@
+/*
+ * Get rhythm units (base-line-height) in rem.
+ *
+ * 1. Unitless number stands for number of base-line-heights.
+ * 2. Round sizes to nearest rhythm size
+ * 3. Allow rounding to nearest half rhythm size based on current configuration
+ * 4. Return result in rem
+ */
+@function rhythm($value: 1) {
+    @if $value == 0 {
+        @return 0;
+    }
+    @if unitless($value) { /* 1 */
+        @return $value * base(line-height);
+    } @else {
+        $result: ceil(rem($value) / base(line-height)) / 2; /* 2 */
+        @if get(allow-half-line) { /* 3 */
+            $result: ceil(rem($value) / (base(line-height) / 2)) / 2;
+        }
+        @return $result * base(line-height); /* 4 */
+    }
+}

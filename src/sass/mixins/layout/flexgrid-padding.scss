@@ -1,0 +1,55 @@
+@mixin flexgrid-padding($padding: auto, $item: '.item') {
+    @if $padding == auto {
+        @each $breakpoint in map-keys(map-get($variables, gap)) {
+            @include responsive-output($breakpoint) {
+                margin: rhythm(get(gap $breakpoint) * -1) rhythm(get(gap $breakpoint) * -.5) 0;
+            }
+        }
+        #{$item} {
+            @each $breakpoint in map-keys(map-get($variables, gap)) {
+                @include responsive-output($breakpoint) {
+                    padding: rhythm(get(gap $breakpoint)) rhythm(get(gap $breakpoint) * .5) 0;
+                }
+            }
+        }
+    } @else if length($padding) == 2 {
+        // different horizontal and vertical padding
+        $padding-y: first($padding);
+        $padding-x: last($padding);
+        // convert rhythm units
+        @if type-of($padding-y) == number {
+            $padding-y: rhythm($padding-y);
+        }
+        @if type-of($padding-x) == number {
+            $padding-x: rhythm($padding-x);
+        }
+        // output padding
+        @if ($padding-y > 0) and ($padding-x > 0) {
+            margin: ($padding-y * -1) ($padding-x * -.5) 0;
+            #{$item} {
+                padding: $padding-y ($padding-x * .5) 0;
+            }
+        } @else if ($padding-y > 0) {
+            margin-top: $padding-y * -1;
+            #{$item} {
+                padding-top: $padding-y;
+            }
+        } @else if ($padding-x > 0) {
+            margin: 0 ($padding-x * -.5);
+            #{$item} {
+                padding: 0 ($padding-x * .5);
+            }
+        }
+    } @else {
+        // specific padding size
+        // convert rhythm units
+        @if type-of($padding) == number {
+            $padding: rhythm($padding)
+        }
+        // output padding
+        margin: ($padding * -1) ($padding * -.5) 0;
+        #{$item} {
+            padding: ($padding) ($padding * .5) 0;
+        }
+    }
+}

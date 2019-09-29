@@ -1,0 +1,18 @@
+/*
+ * Returns speed from variables.
+ * 1. Unitless number is converted to tick unit. 
+ * 2. Time unit is return without processing
+ * 3. String value is get from variables
+ */
+@function speed($speed) {
+    @if is($speed, number) {
+        @if is($speed, unitless) {
+            @return $speed * get(speed tick);
+        } @else if is($speed, time) {
+            @return $speed;
+        }
+    } @else if get(speed $speed) {
+        @return get(speed $speed);
+    }
+    @error "Speed '#{$speed}' not found"
+}

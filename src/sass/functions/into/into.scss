@@ -1,0 +1,17 @@
+@function into($value, $unit) {
+    @if $unit == bool {
+        @return bool($value);
+    } @else if $unit == em {
+        @return em($value);
+    } @else if $unit == list {
+        @return list($value);
+    } @else if $unit == map {
+        @return map($value);
+    } @else if $unit == px {
+        @return px($value);
+    } @else if $unit == rem {
+        @return rem($value);
+    } @else if $unit == string {
+        @return string($value);
+    }
+}

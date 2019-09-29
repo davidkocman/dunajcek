@@ -1,0 +1,35 @@
+@mixin center($axis: xy, $position: relative, $z-index: _) {
+    @if $position == flex {
+        display: flex;
+        @if ($axis == x) {
+            justify-content: center;
+        } @else if ($axis == y) {
+            align-items: center;
+        } @else if ($axis == xy) {
+            align-items: center;
+            justify-content: center;
+        } @else {
+            @error "Invalid value '#{$axis}'";
+        }
+    } @else if $position == relative or $position == absolute {
+        position: $position;
+        @if ($axis == x) {
+            left: 50%;
+            transform: translateX(-50%);
+        } @else if ($axis == y) {
+            top: 50%;
+            transform: translateY(-50%);
+        } @else if ($axis == xy) {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        } @else {
+            @error "Invalid value '#{$axis}'";
+        }
+    } @else {
+        @error "Invalid value '#{$position}'";
+    }
+    @if not is-_($z-index) {
+        z-index: $z-index;
+    }
+}

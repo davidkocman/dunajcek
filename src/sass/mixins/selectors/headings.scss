@@ -1,0 +1,14 @@
+@mixin headings($headings...){
+    @if $headings == all {
+        $headings: 1 6;
+    }
+    $selector: ();
+    @each $group in $headings {
+		@for $i from first($group) through last($group) {
+            $selector: append($selector, unquote('h#{$i}'), comma);
+        }
+    }
+    #{$selector} {
+        @content;
+    }
+}

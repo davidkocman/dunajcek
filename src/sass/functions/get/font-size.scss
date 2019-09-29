@@ -1,0 +1,9 @@
+@function font-size($size: 1) {
+    @if is-unitless($size) or is-px($size) {
+        @return rem($size);
+    }
+    @if is-_($size) {
+        @return null;
+    }
+	@return $size;
+}

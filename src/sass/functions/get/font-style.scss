@@ -1,0 +1,10 @@
+/*
+ * Get font style from variables.
+ */
+@function font-style($font, $style) {
+	$font: font($font);
+	@if get($font style $style) {
+	    @return get($font style $style);
+	}
+	@error "Font style '#{$font}' '#{$style}' not found";
+}

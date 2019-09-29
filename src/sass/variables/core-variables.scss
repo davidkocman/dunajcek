@@ -1,0 +1,956 @@
+$core-variables: (
+	allow-half-line: false,
+	asset: (
+		base: '/assets',
+		image: 'images',
+		font: 'fonts',
+	),
+	base: (
+		font-size: 16px,
+		line-height: 24px,
+	),
+	breakpoint: (
+		0: 0,
+		3: 360px,
+		4: 480px,
+		5: 512px,
+		6: 640px,
+		7: 768px,
+		8: 800px,
+		9: 960px,
+		10: 1024px,
+		11: 1152px,
+		12: 1280px,
+		13: 1366px,
+		14: 1440px,
+		15: 1536px,
+		16: 1600px,
+		17: 1700px,
+		18: 1800px,
+		19: 1920px,
+		l: landscape,
+		p: portrait,
+		r: retina,
+	),
+	char: (
+		// SPECIAL CHARACTERS
+		quot: '\0022',			// " quotation mark
+		amp: '\0026',			// & ampersand
+		lt: '\003c',			// < less-than
+		gt: '\003e',			// > greater-than sign
+		// LATIN
+		nbsp: '\00a0',			// 160 break space
+		iexcl: '\00a1',			// ¡ inverted exclamation mark
+		cent: '\00a2',			// ¢ cent sign
+		pound: '\00a3',			// £ pound sterling sign
+		curren: '\00a4',		// ¤ general currency sign
+		yen: '\00a5',			// ¥ yen sign
+		indianrupee: '\20B9',	// ₹ Indian Rupee (INR) sign
+		brvbar: '\00a6',		// ¦ broken (vertical) bar
+		sect: '\00a7',			// § section sign
+		uml: '\00a8',			// ¨ umlaut (dieresis
+		copy: '\00a9',			// © copyright sign
+		ordf: '\00aa',			// ª ordinal indicator, feminine
+		laquo: '\00ab',			// « angle quotation mark, left
+		_not: '\00ac',			// ¬ not sign
+		shy: '\00ad',			// 173 hyphen
+		reg: '\00ae',			// ® registered sign
+		macr: '\00af',			// ¯ macron
+		deg: '\00b0',			// ° degree sign
+		plusmn: '\00b1',		// ± plus-or-minus sign
+		sup2: '\00b2',			// ² superscript two
+		sup3: '\00b3',			// ³ superscript three
+		acute: '\00b4',			// ´ acute accent
+		micro: '\00b5',			// µ micro sign
+		para: '\00b6',			// ¶ pilcrow (paragraph sign
+		middot: '\00b7',		// · middle dot
+		cedil: '\00b8',			// ¸ cedilla
+		sup1: '\00b9',			// ¹ superscript one
+		ordm: '\00ba',			// º ordinal indicator, masculine
+		raquo: '\00bb',			// » angle quotation mark, right
+		frac14: '\00bc',		// ¼ fraction one-quarter
+		frac12: '\00bd',		// ½ fraction one-half
+		frac34: '\00be',		// ¾ fraction three-quarters
+		iquest: '\00bf',		// ¿ inverted question mark
+		Agrave: '\00c0',		// À capital A, grave accent
+		Aacute: '\00c1',		// Á capital A, acute accent
+		Acirc: '\00c2',			// Â capital A, circumflex accent
+		Atilde: '\00c3',		// Ã capital A, tilde
+		Auml: '\00c4',			// Ä capital A, dieresis or umlaut mark
+		Aring: '\00c5',			// Å capital A, ring
+		AElig: '\00c6',			// Æ capital AE diphthong (ligature
+		Ccedil: '\00c7',		// Ç capital C, cedilla
+		Egrave: '\00c8',		// È capital E, grave accent
+		Eacute: '\00c9',		// É capital E, acute accent
+		Ecirc: '\00ca',			// Ê capital E, circumflex accent
+		Euml: '\00cb',			// Ë capital E, dieresis or umlaut mark
+		Igrave: '\00cc',		// Ì capital I, grave accent
+		Iacute: '\00cd',		// Í capital I, acute accent
+		Icirc: '\00ce',			// Î capital I, circumflex accent
+		Iuml: '\00cf',			// Ï capital I, dieresis or umlaut mark
+		ETH: '\00d0',			// Ð capital Eth, Icelandic
+		Ntilde: '\00d1',		// Ñ capital N, tilde
+		Ograve: '\00d2',		// Ò capital O, grave accent
+		Oacute: '\00d3',		// Ó capital O, acute accent
+		Ocirc: '\00d4',			// Ô capital O, circumflex accent
+		Otilde: '\00d5',		// Õ capital O, tilde
+		Ouml: '\00d6',			// Ö capital O, dieresis or umlaut mark
+		times: '\00d7',			// × multiply sign
+		Oslash: '\00d8',		// Ø capital O, slash
+		Ugrave: '\00d9',		// Ù capital U, grave accent
+		Uacute: '\00da',		// Ú capital U, acute accent
+		Ucirc: '\00db',			// Û capital U, circumflex accent
+		Uuml: '\00dc',			// Ü capital U, dieresis or umlaut mark
+		Yacute: '\00dd',		// Ý capital Y, acute accent
+		THORN: '\00de',			// Þ capital THORN, Icelandic
+		szlig: '\00df',			// ß small sharp s, German (sz ligature
+		agrave: '\00e0',		// à small a, grave accent
+		aacute: '\00e1',		// á small a, acute accent
+		acirc: '\00e2',			// â small a, circumflex accent
+		atilde: '\00e3',		// ã small a, tilde
+		auml: '\00e4',			// ä small a, dieresis or umlaut mark
+		aring: '\00e5',			// å small a, ring
+		aelig: '\00e6',			// æ small ae diphthong (ligature
+		ccedil: '\00e7',		// ç small c, cedilla
+		egrave: '\00e8',		// è small e, grave accent
+		eacute: '\00e9',		// é small e, acute accent
+		ecirc: '\00ea',			// ê small e, circumflex accent
+		euml: '\00eb',			// ë small e, dieresis or umlaut mark
+		igrave: '\00ec',		// ì small i, grave accent
+		iacute: '\00ed',		// í small i, acute accent
+		icirc: '\00ee',			// î small i, circumflex accent
+		iuml: '\00ef',			// ï small i, dieresis or umlaut mark
+		eth: '\00f0',			// ð small eth, Icelandic
+		ntilde: '\00f1',		// ñ small n, tilde
+		ograve: '\00f2',		// ò small o, grave accent
+		oacute: '\00f3',		// ó small o, acute accent
+		ocirc: '\00f4',			// ô small o, circumflex accent
+		otilde: '\00f5',		// õ small o, tilde
+		ouml: '\00f6',			// ö small o, dieresis or umlaut mark
+		divide: '\00f7',		// ÷ divide sign
+		oslash: '\00f8',		// ø small o, slash
+		ugrave: '\00f9',		// ù small u, grave accent
+		uacute: '\00fa',		// ú small u, acute accent
+		ucirc: '\00fb',			// û small u, circumflex accent
+		uuml: '\00fc',			// ü small u, dieresis or umlaut mark
+		yacute: '\00fd',		// ý small y, acute accent
+		thorn: '\00fe',			// þ small thorn, Icelandic
+		yuml: '\00ff',			// ÿ small y, dieresis or umlaut mark
+		LATIN EXTENDED
+		OElig: '\0152',			// Œ latin capital ligature oe
+		oelig: '\0153',			// œ latin small ligature oe
+		Scaron: '\0160',		// Š latin capital letter s with caron
+		scaron: '\0161',		// š latin small letter s with caron
+		Yuml: '\0178',			// Ÿ latin capital letter y with diaeresis
+		fnof: '\0192',			// ƒ latin small f with hook
+		// SPACING MODIFIER LETTERS
+		circ: '\02c6',			// ˆ circumflex accent
+		tilde: '\02dc',			// ˜ u
+		// GREEK
+		Alpha: '\0391',			// Α greek capital letter alpha
+		Beta: '\0392',			// Β greek capital letter beta
+		Gamma: '\0393',			// Γ greek capital letter gamma
+		Delta: '\0394',			// Δ greek capital letter delta
+		Epsilon: '\0395',		// Ε greek capital letter epsilon
+		Zeta: '\0396',			// Ζ greek capital letter zeta
+		Eta: '\0397',			// Η greek capital letter eta
+		Theta: '\0398',			// Θ greek capital letter theta
+		Iota: '\0399',			// Ι greek capital letter iota
+		Kappa: '\039a',			// Κ greek capital letter kappa
+		Lambda: '\039b',		// Λ greek capital letter lambda
+		Mu: '\039c',			// Μ greek capital letter mu
+		Nu: '\039d',			// Ν greek capital letter nu
+		Xi: '\039e',			// Ξ greek capital letter xi
+		Omicron: '\039f',		// Ο greek capital letter omicron
+		Pi: '\03a0',			// Π greek capital letter pi
+		Rho: '\03a1',			// Ρ greek capital letter rho
+		Sigma: '\03a3',			// Σ greek capital letter sigma
+		Tau: '\03a4',			// Τ greek capital letter tau
+		Upsilon: '\03a5',		// Υ greek capital letter upsilon
+		Phi: '\03a6',			// Φ greek capital letter phi
+		Chi: '\03a7',			// Χ greek capital letter chi
+		Psi: '\03a8',			// Ψ greek capital letter psi
+		Omega: '\03a9',			// Ω greek capital letter omega
+		alpha: '\03b1',			// α greek small letter alpha
+		beta: '\03b2',			// β greek small letter beta
+		gamma: '\03b3',			// γ greek small letter gamma
+		delta: '\03b4',			// δ greek small letter delta
+		epsilon: '\03b5',		// ε greek small letter epsilon
+		zeta: '\03b6',			// ζ greek small letter zeta
+		eta: '\03b7',			// η greek small letter eta
+		theta: '\03b8',			// θ greek small letter theta
+		iota: '\03b9',			// ι greek small letter iota
+		kappa: '\03ba',			// κ greek small letter kappa
+		lambda: '\03bb',		// λ greek small letter lambda
+		mu: '\03bc',			// μ greek small letter mu
+		nu: '\03bd',			// ν greek small letter nu
+		xi: '\03be',			// ξ greek small letter xi
+		omicron: '\03bf',		// ο greek small letter omicron
+		pi: '\03c0',			// π greek small letter pi
+		rho: '\03c1',			// ρ greek small letter rho
+		sigmaf: '\03C2',		// ς greek small letter final sigma
+		sigma: '\03C3',			// σ greek small letter sigma
+		tau: '\03C4',			// τ greek small letter tau
+		upsilon: '\03C5',		// υ greek small letter upsilon
+		phi: '\03C6',			// φ greek small letter phi
+		chi: '\03C7',			// χ greek small letter chi
+		psi: '\03C8',			// ψ greek small letter psi
+		omega: '\03C9',			// ω greek small letter omega
+		thetasym: '\03D1',		// ϑ greek small letter theta symbol
+		upsih: '\03D2',			// ϒ greek upsilon with hook symbol
+		piv: '\03D6',			// ϖ greek pi symbol
+		// PUNCTUATION
+		ensp: '\2002',			//   en space
+		emsp: '\2003',			//   em space
+		thinsp: '\2009',		//   thin space
+		zwnj: '\200C',			// ‌ zero width non-joiner+200C NEW
+		zwj: '\200D',			// ‍ zero width joiner+200D NEW
+		lrm: '\200E',			// ‎ left-to-right mark+200E NEW
+		rlm: '\200F',			// ‏ right-to-left mark+200F NEW
+		ndash: '\2013',			// – en dash
+		mdash: '\2014',			// — em dash
+		lsquo: '\2018',			// ‘ left single quotation mark
+		rsquo: '\2019',			// ’ right single quotation mark
+		sbquo: '\201A',			// ‚ single low-9 quotation mark
+		ldquo: '\201C',			// “ left double quotation mark
+		rdquo: '\201D',			// ” right double quotation mark
+		bdquo: '\201E',			// „ double low-9 quotation mark
+		dagger: '\2020',		// † dagger
+		Dagger: '\2021',		// ‡ double dagger
+		permil: '\2030',		// ‰ per mille sign
+		lsaquo:	'\2039',		// ‹ single left-pointing angle quotation mark
+		rsaquo: '\203A', 		// › single right-pointing angle quotation mark ,
+		bull: '\2022',			// • bullet, a.k.a. black small circle, bullet is NOT the same as bullet operator — u+2219
+		hellip:	'\2026',		// … horizontal ellipsis, a.k.a. three dot leader
+		prime: '\2032',			// ′ prime, a.k.a. minutes, a.k.a. feet
+		Prime: '\2033',			// ″ double prime, a.k.a. seconds, a.k.a. inches
+		oline: '\203E',			// ‾ overline, a.k.a. spacing overscore
+		frasl: '\2044',			// ⁄ fraction slash
+		// LETTER-LIKE SYMBOLS
+		weierp: '\2118',		// ℘ script capital P, a.k.a. power set, a.k.a. Weierstrass p
+		image: '\2111',			// ℑ blackletter capital I, a.k.a. imaginary part
+		real: '\211C',			// ℜ blackletter capital R, a.k.a. real part symbol
+		trade: '\2122',			// ™ trade mark sign
+		alefsym: '\2135',		// ℵ alef symbol
+		// ARROWS
+		larr: '\2190',			// ← leftwards arrow	
+		uarr: '\2191',			// ↑ upwards arrow
+		rarr: '\2192',			// → rightwards arrow	
+		darr: '\2193',			// ↓ downwards arrow	
+		harr: '\2194',			// ↔ left right arrow
+		crarr: '\21B5',			// ↵ downwards arrow with corner leftwards, a.k.a. carriage return
+		lArr: '\21D0',			// ⇐ leftwards double arrow, can be used for ‘is implied by’
+		uArr: '\21D1',			// ⇑ upwards double arrow
+		rArr: '\21D2',			// ⇒ rightwards double arrow
+		dArr: '\21D3',			// ⇓ downwards double arrow
+		hArr: '\21D4',			// ⇔ left right double arrow
+		left-triangle: '\25C0',	// ◄ black left pointing triangle
+		right-triangle: '\25b6',// ► black right pointing triangle
+		up-triangle: '\25b2',	// ▲ black up pointing triangle
+		down-triangle: '\25bc',	// ▼ black down pointing triangle
+		// MATHEMATICAL OPERATORS
+		forall: '\2200',		// ∀ for all
+		part: '\2202',			// ∂ partial differential
+		exist: '\2203',			// ∃ there exists
+		empty: '\2205',			// ∅ empty set, a.k.a. null set, a.k.a. diameter
+		nabla: '\2207',			// ∇ nabla, a.k.a. backward difference
+		isin: '\2208',			// ∈ element of
+		notin: '\2209',			// ∉ not an element of
+		ni: '\220B',			// ∋ contains as member
+		prod: '\220F',			// ∏ n-ary product, a.k.a. product sign
+		sum: '\2211',			// ∑ n-ary sumation
+		minus: '\2212',			// − minus sign
+		lowast: '\2217',		// ∗ asterisk operator
+		radic: '\221A',			// √ square root, a.k.a. radical sign
+		prop: '\221D',			// ∝ proportional to
+		infin: '\221E',			// ∞ infinity
+		ang: '\2220',			// ∠ angle
+		and: '\2227',			// ⊥ logical and, a.k.a. wedge
+		or: '\2228',			// ⊦ logical or, a.k.a. vee
+		cap: '\2229',			// ∩ intersection, a.k.a. cap
+		cup: '\222A',			// ∪ union, a.k.a. cup
+		int: '\222B',			// ∫ integral
+		there4: '\2234',		// ∴ therefore
+		sim: '\223C',			// ∼ tilde
+		cong: '\2245',			// ≅ approximately equal to
+		asymp: '\2248',			// ≈ almost equal to, a.k.a. asymptotic to
+		ne: '\2260',			// ≠ not equal to
+		equiv: '\2261',			// ≡ identical to
+		le: '\2264',			// ≤ less-than or equal to
+		ge: '\2265',			// ≥ greater-than or equal to
+		sub: '\2282',			// ⊂ subset of
+		sup: '\2283',			// ⊃ superset of
+		nsub: '\2284',			// ⊄ not a subset of
+		sube: '\2286',			// ⊆ subset of or equal to
+		supe: '\2287',			// ⊇ superset of or equal to
+		oplus: '\2295',			// ⊕ circled plus, a.k.a. direct sum
+		otimes: '\2297',		// ⊗ circled times, a.k.a. vector product
+		perp: '\22A5',			// ⊥ up tack
+		sdot: '\22C5',			// ⋅ dot operator
+		// TECHNICAL
+		lceil: '\2308',			// ⌈ left ceiling, a.k.a. apl upstile
+		rceil: '\2309',			// ⌉ right ceiling
+		lfloor: '\230A',		// ⌊ left floor, a.k.a. apl downstile
+		rfloor: '\230B',		// ⌋ right floor
+		lang: '\2329',			// 〈 left-pointing angle bracket
+		rang: '\232A',			// 〉 right-pointing angle bracket
+		// MISCELLANEOUS
+		loz: '\25CA',			  // ◊ lozenge
+		spades: '\2660',		// ♠ black spade suit
+		clubs: '\2663',			// ♣ black club suit, a.k.a. shamrock
+		hearts: '\2665',		// ♥ black heart suit, a.k.a. valentine
+		diams: '\2666',			// ♦ black diamond suit
+
+		carret: '\A',
+		euro: '\20AC',
+		slash: '\002F',
+	),
+	color: (
+		black: 0,
+		white: 100,
+		muted: 50,
+		debug: cyan .5,
+        text: color black,
+		// Messages
+		error: #F44336,
+		info: #2196F3,
+		success: #4CAF50,
+		warning: #FF9800,
+		// Selection
+		selection: (
+			background-color: color black,
+			color: auto,
+		),
+        // Social media
+        disqus: #2e9fff,
+        facebook: #3b5998,
+        messenger: #0084ff,
+        google: #d34836,
+        twitter: #1da1f2,
+        whatsapp: #25D366,
+	),
+	compatibility: (
+		browser-minimum-versions: (
+			'chrome': '53',
+			'firefox': '43',
+			'safari': '9.1',
+			'ie': '11',
+			'ios-safari': '9.3',
+			'opera': '40',
+		),
+	),
+	debug: false,
+	direction: (
+		t: top, 
+		r: right, 
+		b: bottom, 
+		l: left, 
+		x: right left, 
+		y: top bottom, 
+		xy: top right bottom left,
+	),
+	dropcap: (
+		0: (
+			background: null,
+			color: null,
+			font: heading,
+			margin: null,
+			padding: null,
+			size: 4,
+		),
+	),
+	font: (
+		default: font sans-serif,
+		smoothing: true,
+		size: 0,
+		sans-serif: (
+			fontstack: ('Open Sans', sans-serif),
+			body-height: 1,
+			cap-height: 0.71375,
+			x-height: 0.6,
+			offset: -0.112,
+			appearance: (
+				default: font sans-serif appearance regular,
+				strong: font sans-serif appearance bold,
+				regular: (
+					style: normal,
+					weight: 400,
+				),
+				bold: (
+					style: normal,
+					weight: 700,
+				),
+			),
+		),
+		serif: (
+			fontstack: (Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif),
+			body-height: 1,
+			cap-height: 0.71375,
+			x-height: 0.6,
+			offset: -0.112,
+			appearance: (
+				default: font serif appearance regular,
+				strong: font serif appearance bold,
+				regular: (
+					style: normal,
+					weight: 400,
+				),
+				bold: (
+					style: normal,
+					weight: 700,
+				),
+			),
+		),
+		mono: (
+			fontstack: ('Source Code Pro', monospace),
+			body-height: 1,
+			cap-height: 0.71375,
+			x-height: 0.6,
+			offset: -0.112,
+			appearance: (
+				default: font mono appearance regular,
+				strong: font mono appearance bold,
+				regular: (
+					style: normal,
+					weight: 400,
+				),
+				bold: (
+					style: normal,
+					weight: 700,
+				),
+			),
+		),
+	),
+	gap: ( // breakpoint : number of lines of vertical grid
+		0: 1,
+ 	),
+	min-line-height: 1.25,
+	otf: (
+		// aalt: null,
+			// Access All Alternates
+				// This feature makes all variations of a selected character accessible. This serves several purposes: An application may not support the feature by which the desired glyph would normally be accessed; the user may need a glyph outside the context supported by the normal substitution, or the user may not know what feature produces the desired glyph. Since many-to-one substitutions are not covered, ligatures would not appear in this table unless they were variant forms of another ligature. A user inputs the P in Poetica, and is presented with a choice of the four standard capital forms, the eight swash capital forms, the initial capital form and the small capital form.
+		// abvf: null,
+			// Above-Base Forms
+				// Substitutes the above-base form of a vowel. In complex scripts like Khmer, the vowel OE must be split into a pre-base form and an above-base form. The above-base form of OE would be substituted to form the correct piece of the letter that is displayed above the base consonant.
+		// abvm: null,
+			// Above-Base Mark Positioning
+				// Positions marks above base glyphs. In complex scripts like Devanagari (Indic), the Anuswar needs to be positioned above the base glyph. This base glyph can be a base consonant or conjunct. The base glyph and the presence/absence of other marks above the base glyph decides the location of the Anuswar, so that they do not overlap each other.
+		// abvs: null,
+			// Above-Base Substitutions
+				// Substitutes a ligature for a base glyph and mark that's above it. In complex scripts like Kannada (Indic), the vowel sign for the vowel I which a mark, is positioned above base consonants. This mark combines with the consonant Ga to form a ligature.
+		// afrc: null,
+			// Alternative Fractions
+				// Replaces figures separated by a slash with an alternative form. The user enters 3/4 in a recipe and get the threequarters nut fraction.
+		// akhn: null,
+			// Akhands
+				// Preferentially substitutes a sequence of characters with a ligature. This substitution is done irrespective of any characters that may precede or follow the sequence. In complex scripts like Devanagari (Indic), the sequence Ka, Halant, Ssa should always produce the ligature Kssa, irrespective of characters that precede/follow the above given sequence. The Kssa is identified in Devanagari as an Akhand character (meaning unbreakable).
+		// blwf: null,
+			// Below-Base Forms
+				// Substitutes the below-base form of a consonant in conjuncts. In complex scripts like Oriya (Indic), the consonant Va has a below-base form that is used to generate conjuncts. Given a sequence Gha, Virama (Halant), Va; the below-base form of Va would be substituted to form the conjunct GhVa.
+		// blwm: null,
+			// Below-Base Mark Positioning
+				// The form that consonants appear below the base glyph. Consonants in below-base form appear in Bengali syllables after the ones that form the base glyph. Below-base forms are represented by the non-spacing mark glyph.
+		// blws: null,
+			// Below-Base Substitutions
+				// Produces ligatures that comprise of base glyph and below-base forms. In the Malayalam script (Indic), the conjunct Kla, requires a ligature which is formed using the base glyph Ka and the below-base form of consonant La. This feature can also be used to substitute ligatures formed using base glyphs and below base matras in Indic scripts.
+		// c2pc: null,
+			// Petite Capitals From Capitals
+				// This feature turns capital characters into petite capitals. It is generally used for words which would otherwise be set in all caps, such as acronyms, but which are desired in petite-cap form to avoid disrupting the flow of text. See the pcap feature description for notes on the relationship of caps, smallcaps and petite caps. The user types UNICEF or NASA, applies c2pc and gets petite cap text.
+		// c2sc: null,
+			// Small Capitals From Capitals 
+				// Small Capitals From Capitals
+		// calt: null,
+			// Contextual Alternates
+				// In specified situations, replaces default glyphs with alternate forms which provide better joining behavior. Used in script typefaces which are designed to have some or all of their glyphs join. In Caflisch Script, o is replaced by o.alt2 when followed by an ascending letterform.
+		// case: null,
+			// Case-Sensitive Forms
+				// Shifts various punctuation marks up to a position that works better with all-capital sequences or sets of lining figures; also changes oldstyle figures to lining figures. By default, glyphs in a text face are designed to work with lowercase characters. Some characters should be shifted vertically to fit the higher visual center of all-capital or lining text. Also, lining figures are the same height (or close to it) as capitals, and fit much better with all-capital text. The user selects a block of text and applies this feature. The dashes, bracketing characters, guillemet quotes and the like shift up to match the capitals, and oldstyle figures change to lining figures.
+		// ccmp: null,
+			// Glyph Composition/Decomposition
+				// To minimize the number of glyph alternates, it is sometimes desired to decompose a character into two glyphs. Additionally, it may be preferable to compose two characters into a single glyph for better glyph processing. This feature permits such composition/decompostion. The feature should be processed as the first feature processed, and should be processed only when it is called. In Syriac, the character 0x0732 is a combining mark that has a dot above AND a dot below the base character. To avoid multiple glyph variants to fit all base glyphs, the character is decomposed into two glyphs...a dot above and a dot below. These two glyphs can then be correctly placed using GPOS. In Arabic it might be preferred to combine the shadda with fatha (0x0651, 0x064E) into a ligature before processing shapes. This allows the font vendor to do special handling of the mark combination when doing further processing without requiring larger contextual rules.
+		// cjct: null,
+			// Conjunct Forms
+				// This feature allows for control over re-ordering  of reph and pre-pended matras in case of consonants that do not take half forms yet do form  conjunct ligatures in combination with certain following consonants.
+		// clig: null,
+			// Contextual Ligatures 
+				// Replaces a sequence of glyphs with a single glyph which is preferred for typographic purposes. Unlike other ligature features, clig specifies the context in which the ligature is recommended. This capability is important in some script designs and for swash ligatures. The glyph for ft replaces the sequence f t in Bickham Script, except when preceded by an ascending letter.
+		// cpsp: null,
+			// Capital Spacing
+				// Globally adjusts inter-glyph spacing for all-capital text. Most typefaces contain capitals and lowercase characters, and the capitals are positioned to work with the lowercase. When capitals are used for words, they need more space between them for legibility and esthetics. This feature would not apply to monospaced designs. Of course the user may want to override this behavior in order to do more pronounced letterspacing for esthetic reasons. The user sets a title in all caps, and the Capital Spacing feature opens the spacing.
+		// crcy: null,
+			// 
+				// All currency symbols are grouped together by this feature.
+		// cswh: null,
+			// Contextual Swash 
+				// This feature replaces default character glyphs with corresponding swash glyphs in a specified context. Note that there may be more than one swash alternate for a given character. Example: The user sets the word HOLIDAY in Poetica with this feature active, and is presented with a choice of three alternate forms appropriate for an initial H and one alternate appropriate for a medial L.
+		// curs: null,
+			// Cursive Positioning
+				// In cursive scripts like Arabic, this feature cursively positions adjacent glyphs. In Arabic, the Meem followed by a Reh are cursively positioned by overlapping the exit point of the Meem on the entry point of the Reh.
+		// dflt: null,
+			// Default Processing
+				// Default Processing
+		// dist: null,
+			// Distances
+				// Provides a means to control distance between glyphs.  In the Devanagari (Indic) script, the distance between the vowel sign U and a consonant can be adjusted using this.
+		// dlig: null,
+			// Discretionary Ligatures
+				// Replaces a sequence of glyphs with a single glyph which is preferred for typographic purposes. This feature covers those ligatures which may be used for special effect, at the user's preference. The glyph for ct replaces the sequence of glyphs c t, or U+322E (Kanji ligature for "Friday") replaces the sequence U+91D1 U+66DC U+65E5.
+		// dnom: null,
+			// Denominators 
+				// Replaces selected figures which follow a slash with denominator figures. In the string 11/17 selected by the user, the application turns the 17 into denominators when the user applies the fraction feature.
+		// dpng: null,
+			// 
+				// 
+		// ESQF: null,
+			// Enhanced Screen Quality Font
+				// The TrueType font format is a powerful technology that allows for a high degree of fine-tuning to the font outline for low-resolution output. But not all TrueType fonts are the same. Monotype Imaging's ESQ® (Enhanced Screen Quality) fonts are the result of our superior hinting tools and highly trained font engineers for the ultimate rendering of fonts at low resolution.
+		// EURO: null,
+			// Euro symbol
+				// Denotes the presence of the Euro monetary character in the font.
+		// expt: null,
+			// Expert Forms
+				// Like the JIS78 Forms described above, this feature replaces standard forms in Japanese fonts with corresponding forms preferred by typographers. Although most of the JIS78 substitutions are included, the expert substitution goes on to handle many more characters. The user would invoke this feature to replace kanji character U+5516 with U+555E.
+		// falt: null,
+			// Final glyph Alternates
+				// Replaces line final glyphs with alternate forms specifically designed for this purpose (they would have less or more advance width as need may be), to help justification of text. In the Arabic script, providing alternate forms for line final glyphs would result in better justification. eg. replacing a long tailed Yeh-with-tail with one that has a slightly longer/shorter tail.
+		// fin2: null,
+			// Terminal Forms #2
+				// Replaces the Alaph glyph at the end of Syriac words with its appropriate form, when the preceding base character cannot be joined to, and that preceding base character is not a Dalath, Rish, or dotless Dalath-Rish. When an Alaph is preceded by a He, the Alaph would be replaced by an appropriate form. &amp;lt;BR&amp;gt;This feature is used only for the Syriac script alaph character.
+		// fin3: null,
+			// Terminal Forms #3
+				// Replaces Alaph glyphs at the end of Syriac words when the preceding base character is a Dalath, Rish, or dotless Dalath-Rish. When an Alaph is preceded by a Dalath, the Alaph would be replaced by an appropriate form. &amp;lt;BR&amp;gt;This feature is used only for the Syriac script alaph character.
+		// fina: null,
+			// Terminal Forms 
+				// Replaces glyphs at the ends of words with alternate forms designed for this use. This is common in Latin connecting scripts, and required in various non-Latins like Arabic. In the typeface Poetica, the default e in the word 'type' is replaced with the e.end form.
+		// frac: null,
+			// Fractions
+				// Replaces figures separated by a slash with 'common' (diagonal) fractions. The user enters 3/4 in a recipe and gets the threequarters fraction.
+		// fwid: null,
+			// Full Width
+				// Replaces glyphs set on other widths with glyphs set on full (usually em) widths. In a CJKV font, this may include "lower ASCII" Latin characters and various symbols. In a European font, this feature replaces proportionally-spaced glyphs with monospaced glyphs, which are generally set on widths of 0.6 em. The user may invoke this feature in a Japanese font to get full monospaced Latin glyphs instead of the corresponding proportionally-spaced versions.
+		// half: null,
+			// Half Forms
+				// Produces the half forms of consonants in Indic scripts. In Hindi (Devanagari script), the conjunct KKa, obtained by doubling the Ka, is denoted with a half form of Ka followed by the full form.
+		// haln: null,
+			// Halant Forms
+				// Produces the halant forms of consonants in Indic scripts. In Sanskrit (Devanagari script), syllable final consonants are frequently required in their halant form.
+		// halt: null,
+			// Alternate Half Width
+				// Respaces glyphs designed to be set on full-em widths, fitting them onto half-em widths. This differs from hwid in that it does not substitute new glyphs. The user may invoke this feature in a CJKV font to get better fit for punctuation or symbol glyphs without disrupting the monospaced alignment.
+		// hist: null,
+			// Historical Forms
+				// Some letterforms were in common use in the past, but appear anachronistic today. The best-known example is the long form of s; others would include the old Fraktur k. Some fonts include the historical forms as alternates, so they can be used for a 'period' effect. This feature replaces the default (current) forms with the historical alternates. While some ligatures are also used for historical effect, this feature deals only with single characters. The user applies this feature in Adobe Jenson to get the archaic forms of M, Q and Z.
+		// hkna: null,
+			// Horizontal Kana Alternates
+				// Replaces standard kana with forms that have been specially designed for only horizontal writing. This is a typographic optimization for improved fit and more even color. Also see vkna. Standard full-width kana (hiragana and katakana) are replaced by forms that are designed for horizontal use.
+		// hlig: null,
+			// Historical Ligatures
+				// Some ligatures were in common use in the past, but appear anachronistic today. Some fonts include the historical forms as alternates, so they can be used for a 'period' effect. This feature replaces the default (current) forms with the historical alternates. The user applies this feature using Palatino Linotype, and historic ligatures are formed for all long s forms, including: long s+t, long s+b, long s+h, long s+k, and several others.
+		// hngl: null,
+			// Hangul
+				// Replaces hanja (Chinese-style) Korean characters with the corresponding hangul (syllabic) characters. This effectively reverses the standard input method, in which hangul are entered and replaced by hanja. Many of these substitutions are one-to-one (GSUB lookup type 1), but hanja substitution often requires the user to choose from several possible hangul characters (GSUB lookup type 3). The user may call this feature to get U+AC00 from U+4F3D.
+		// hojo: null,
+			// Hojo Kanji Forms (JIS x 212-1990 Kanji Forms)
+				// Hojo Kanji Forms (JIS x 212-1990 Kanji Forms)&lt;br&gt;
+		// hwid: null,
+			// Half Width
+				// Replaces glyphs on proportional widths, or fixed widths other than half an em, with glyphs on half-em (en) widths. Many CJKV fonts have glyphs which are set on multiple widths; this feature selects the half-em version. There are various contexts in which this is the preferred behavior, including compatibility with older desktop documents. The user may replace a proportional Latin glyph with the same character set on a half-em width.
+		// init: null,
+			// Initial Forms
+				// Replaces glyphs at the beginnings of words with alternate forms designed for this use. This is common in Latin connecting scripts, and required in various non-Latins like Arabic. In the typeface Ex Ponto, the default t in the word 'type' is replaced with the t.begin form.
+		// isol: null,
+			// Isolated Forms
+				// Replaces the nominal form of glyphs with their isolated forms. In Arabic, if the Alef is followed by Lam, the default glyph for Alef is replaced with its isolated form.
+		// ital: null,
+			// Italics
+				// Some fonts (such as Adobe's Pro Japanese fonts) will have both Roman and Italic forms of some characters in a single font. This feature replaces the Roman glyphs with the corresponding Italic glyphs. The user would apply this feature to replace B with &amp;lt;I&amp;gt;B.
+		// jalt: null,
+			// Justification Alternatives
+				// Improves justification of text by replacing glyphs with alternate forms specifically designed for this purpose (they would have less or more advance width as need may be). In the Arabic script, providing alternate forms for line final glyphs would result in better justification and reduce the use of tatweels (Kashidas). eg. replacing a Swash Kaf with an alternate form.
+		// jp04: null,
+			// JIS2004 Forms
+				// The National Language Council (NLC) of Japan has defined new glyph shapes for a number of JIS characters, which were incorporated into JIS X 0213:2004 as new prototypical forms. The 'jp04' feature is a subset of the 'nlck' feature, and is used to access these prototypical glyphs in a manner that maintains the integrity of JIS X 0213:2004.
+		// jp78: null,
+			// JIS78 Forms
+				// This feature replaces default (JIS90) Japanese glyphs with the corresponding forms from the JIS C 6226-1978 (JIS78) specification. The user would invoke this feature to replace kanji character U+5516 with U+555E.
+		// jp83: null,
+			// JIS83 Forms
+				// This feature replaces default (JIS90) Japanese glyphs with the corresponding forms from the JIS X 0208-1983 (JIS83) specification. Because of the Han unification in Unicode, there are no JIS83 glyphs which have distinct Unicode values, so the substitution cannot be described specifically.
+		// jp90: null,
+			// JIS90 Forms
+				// This feature replaces Japanese glyphs from the JIS78 or JIS83 specifications with the corresponding forms from the JIS X 0208-1990 (JIS90) specification. The user would invoke this feature to replace kanji character U+555E with U+5516.
+		// kern: null,
+			// Kerning
+				// 
+		// lfbd: null,
+			// Left Bounds
+				// Aligns glyphs by their apparent left extents at the left ends of horizontal lines of text, replacing the default behavior of aligning glyphs by their origins. This feature is called by the Optical Bounds (opbd) feature above. Succeeding lines beginning with T, D and W would shift to the left by varying amounts when the text is left-justified and this feature is applied.
+		liga: 1,
+			// Standard Ligatures
+				// Replaces a sequence of glyphs with a single glyph which is preferred for typographic purposes. This feature covers the ligatures which the designer/manufacturer judges should be used in normal conditions. The glyph for ffl replaces the sequence of glyphs f f l.
+		// ljmo: null,
+			// Leading Jamo Forms
+				// Substitutes the leading jamo form of a cluster. In Hangul script, the jamo cluster is composed of three parts (leading consonant, vowel, and trailing consonant). When a sequence of leading class jamos are found, their combined leading jamo form is substituted.
+		// lnum: null,
+			// Lining Figures
+				// This feature changes selected figures from oldstyle to the default lining form. The user invokes this feature in order to get lining figures, which fit better with all-capital text. Various characters designed to be used with figures may also be covered by this feature. In cases where lining figures are the default form, this feature would undo previous substitutions.
+		// locl: null,
+			// Localized Forms
+				// Many scripts used to write multiple languages over wide geographical areas have developed localized variant forms of specific letters, which are used by individual literary communities. For example, a number of letters in the Bulgarian and Serbian alphabets have forms distinct from their Russian counterparts and from each other. In some cases the localized form differs only subtly from the script 'norm', in others the forms are radically distinct. This feature enables localized forms of glyphs to be substituted for default forms. The user applies this feature to text to enable localized Bulgarian forms of Cyrillic letters; alternatively, the feature might enable localized Russian forms in a Bulgarian manufactured font in which the Bulgarian forms are the default characters.
+		// mark: null,
+			// Mark Positioning
+				// Positions mark glyphs with respect to base glyphs.&amp;lt;I&amp;gt; In the Arabic script, positioning the Hamza above the Yeh.
+		// med2: null,
+			// Medial Forms #2
+				// Replaces Alaph glyphs in the middle of Syriac words when the preceding base character cannot be joined to. When an Alaph is preceded by a Waw, the Alaph would be replaced by an appropriate form. &amp;lt;BR&amp;gt;This feature is used only for the Syriac script alaph character.
+		// medi: null,
+			// Medial Forms
+				// Replaces glyphs in the middles of words (i.e. following a beginning and preceding an end) with alternate forms designed for this use. Note: This is different from the default form, which is designed for stand-alone use. This is common in Latin connecting scripts, and required in various non-Latins like Arabic. In the typeface Caflisch Script, the y and p in the word 'type' are replaced by the y.med and p.med forms.
+		// mgrk: null,
+			// Mathematical Greek
+				// Replaces standard typographic forms of Greek glyphs with corresponding forms commonly used in mathematical notation (which are a subset of the Greek alphabet). The user applies this feature to U+03A3 (Sigma), and gets U+2211 (summation).
+		// mkmk: null,
+			// Mark to Mark Positioning
+				// Positions marks with respect to other marks. Required in various non-Latin scripts like Arabic. In Arabic, the ligaturised mark Ha with Hamza above it; can also be obtained by positioning these marks relative to one another.
+		// mset: null,
+			// Mark Positioning via Substitution
+				// Positions Arabic combining marks in fonts for Windows 95 using glyph substitution. In Arabic, the Hamza is positioned differently when placed above a Yeh Barree as compared to the Alef.
+		// nalt: null,
+			// Alternate Annotation Forms
+				// Replaces default glyphs with various notational forms (e.g. glyphs placed in open or solid circles, squares, parentheses, diamonds or rounded boxes). In some cases an annotation form may already be present, but the user may want a different one. The user invokes this feature to get U+3200 (the circled form of 'ga') from U+3131 (hangul 'ga').
+		// nlck: null,
+			// NLC Kanji Forms
+				// The National Language Council (NLC) of Japan has defined new glyph shapes for a number of JIS characters. The 'nlck' feature is used to access those glyphs.
+		// nukt: null,
+			// Nukta Forms
+				// Produces Nukta forms in Indic scripts. In Hindi (Devanagari script), a consonant when combined with a nukta gives its nukta form.
+		// numr: null,
+			// Numerators
+				// Replaces selected figures which precede a slash with numerator figures, and replaces the typographic slash with the fraction slash. In the string 11/17 selected by the user, the application turns the 11 into numerators, and the slash into a fraction slash when the user applies the fraction feature.
+		// onum: null,
+			// Old Style Figures
+				// This feature changes selected figures from the default lining style to oldstyle form. The user invokes this feature to get oldstyle figures, which fit better into the flow of normal upper- and lowercase text. Various characters designed to be used with figures may also have oldstyle versions.
+		// opbd: null,
+			// Optical Bounds
+				// Aligns glyphs by their apparent left or right extents in horizontal setting, or apparent top or bottom extents in vertical setting, replacing the default behavior of aligning glyphs by their origins. Another name for this behavior would be visual justification. The optical edge of a given glyph is only indirectly related to its advance width or bounding box; this feature provides a means for getting true visual alignment. Succeeding lines beginning with T, D and W would shift to the left by varying amounts when the text is left-justified and this feature is applied. Succeeding lines ending with r, h and y would likewise shift to the right by differing degrees when the text is right-justified and this feature is applied.
+		// ordn: null,
+			// Ordinals
+				// Replaces default alphabetic glyphs with the corresponding ordinal forms for use after figures. One exception to the follows-a-figure rule is the numero character (U+2116), which is actually a ligature substitution, but is best accessed through this feature. The user applies this feature to turn 2.o into 2.o (abbreviation for secundo).
+		// ornm: null,
+			// Ornaments
+				// This is a dual-function feature, which uses two input methods to give the user access to ornament glyphs (e.g. fleurons, dingbats and border elements) in the font. One method replaces the bullet character with a selection from the full set of available ornaments; the other replaces specific "lower ASCII" characters with ornaments assigned to them. The first approach supports the general or browsing user; the second supports the power user. The user inputs qwwwwwwwwwe to form the top of a flourished box in Adobe Caslon, or inputs the bullet character, then chooses the thistle dingbat.
+		// palt: null,
+			// Proportional Alternate Width
+				// Respaces glyphs designed to be set on full-em widths, fitting them onto individual (more or less proportional) horizontal widths. This differs from pwid in that it does not substitute new glyphs (GPOS, not GSUB feature). The user may prefer the monospaced form, or may simply want to ensure that the glyph is well-fit and not rotated in vertical setting (Latin forms designed for proportional spacing would be rotated). The user may invoke this feature in a Japanese font to get Latin, Kanji, Kana or Symbol glyphs with the full-width design but individual metrics.
+		// pcap: null,
+			// Petite Capitals 
+				// Some fonts contain an additional size of capital letters, shorter than the regular smallcaps and whimsically referred to as petite caps. Such forms are most likely to be found in designs with a small lowercase x-height, where they better harmonise with lowercase text than the taller smallcaps (for examples of petite caps, see the Emigre type families Mrs Eaves and Filosofia). This feature turns lowercase characters into petite capitals. Forms related to petite capitals, such as specially designed figures, may be included. The user enters text as lowercase or mixed case, and gets petite cap text or text with regular uppercase and petite caps. Note that some designers, might extend the petite cap lookups to include uppercase-to-smallcap substitutions, creating a shifting hierarchy of uppercase forms.
+		// pnum: null,
+			// Proportional Figures
+				// Replaces figure glyphs set on uniform (tabular) widths with corresponding glyphs set on glyph-specific (proportional) widths. Tabular widths will generally be the default, but this cannot be safely assumed. Of course this feature would not be present in monospaced designs. The user may apply this feature to get even spacing for lining figures used as dates in an all-cap headline.
+		// pref: null,
+			// Pre-base Forms
+				// Substitutes the pre-base form of a consonant. In the Khmer script, the consonant Ra has a pre-base subscript form subscript called Coeng Ra. When the sequence of Coeng followed by Ra, its pre-base form is substituted.
+		// pres: null,
+			// Pre-base Substitutions
+				// Produces the pre-base forms of conjuncts in Indic scripts. It can also be used to substitute the appropriate glyph variant for pre-base vowel signs. In the Gujarati (Indic) script, the doubling of consonant Ka requires the first Ka to be substituted by its pre-base form. This in turn ligates with the second Ka. Applying this feature would result in the ligaturised version of the doubled Ka.
+		// pstf: null,
+			// Post-base Forms
+				// Substitutes the post-base form of a consonant. In the Gurmukhi (Indic) script, the consonant Ya has a post base form. When the Ya is used as the second consonant in conjunct formation, its post-base form is substituted.
+		// psts: null,
+			// Post-base Substitutions
+				// Substitutes a sequence of a base glyph and post-base glyph, with its ligaturised form. In the Malayalam (Indic) script, the consonant Va has a post base form. When the Va is doubled to form a conjunct- VVa; the first Va [base] and the post base form that follows it, is substituted with a ligature.
+		// pwid: null,
+			// Proportional Widths
+				// Replaces glyphs set on uniform widths (typically full or half-em) with proportionally spaced glyphs. The proportional variants are often used for the Latin characters in CJKV fonts, but may also be used for Kana in Japanese fonts. The user may invoke this feature in a Japanese font to get a proportionally-spaced glyph instead of a corresponding half-width Roman glyph or a full-width Kana glyph.
+		// qwid: null,
+			// Quarter Widths
+				// Replaces glyphs on other widths with glyphs set on widths of one quarter of an em (half an en). The characters involved are normally figures and some forms of punctuation. The user may apply qwid to place a four-digit figure in a single slot in a column of vertical text.
+		// rand: null,
+			// Randomize
+				// In order to emulate the irregularity and variety of handwritten text, this feature allows multiple alternate forms to be used. The user applies this feature in FF Kosmic to get three forms of f in one word.
+		// rkrf: null,
+			// Rakar Forms
+				// Produces conjoined forms for consonants with rakar in Devanagari and Gujarati scripts.
+		// rlig: null,
+			// Required Ligatures
+				// Replaces a sequence of glyphs with a single glyph which is preferred for typographic purposes. This feature covers those ligatures, which the script determines as required to be used in normal conditions. This feature is important for some scripts to insure correct glyph formation. The Arabic character lam followed by alef will always form a ligated lamalef form. This ligated form is a requirement of the script's shaping. The same happens with the Syriac script. 
+		// rphf: null,
+			// Reph Form
+				// Substitutes the Reph form for a consonant and halant sequence. In the Devanagari (Indic) script, the consonant Ra possesses a reph form. When the Ra is a syllable initial consonant and is followed by the virama, it is repositioned after the post base vowel sign within the syllable, and also substituted with a mark that sits above the base glyph.
+		// rtbd: null,
+			// Right Bounds
+				// Aligns glyphs by their apparent right extents at the right ends of horizontal lines of text, replacing the default behavior of aligning glyphs by their origins. This feature is called by the Optical Bounds (opbd) feature above. Succeeding lines ending with r, h and y would shift to the right by differing degrees when the text is right-justified and this feature is applied.
+		// rtla: null,
+			// Right-To-Left Alternates 
+				// A number of Unicode characters are rendered by different shapes depending on the directional context in which they appear. For example, the character U+0028 LEFT PARENTHESIS is interpreted by the Unicode standard as an opening parenthesis and it appears as "(" in left-to-right contexts, and as ")" in right-to-left contexts (this is described on page 66 of the Unicode Standard, version 3.0). The 'rtla' feature is used to access the shape appropriate for a right-to-left context. The 'rtla' feature replaces the glyph "(" by the glyph ")".
+		// ruby: null,
+			// Ruby Notation Forms
+				// Japanese typesetting often uses smaller kana glyphs, generally in superscripted form, to clarify the meaning of kanji which may be unfamiliar to the reader. These are called ruby, from the old typesetting term for four-point-sized type. This feature identifies glyphs in the font which have been designed for this use, substituting them for the default designs. The user applies this feature to the kana character U+3042, to get the ruby form for annotation.
+		// salt: null,
+			// Stylistic Alternates
+				// Many fonts contain alternate glyph designs for a purely esthetic effect; these don't always fit into a clear category like swash or historical. As in the case of swash glyphs, there may be more than one alternate form. This feature replaces the default forms with the stylistic alternates. The user applies this feature to Industria to get the alternate form of g.
+		// sinf: null,
+			// Scientific Inferiors
+				// Replaces lining or oldstyle figures with inferior figures (smaller glyphs which sit lower than the standard baseline, primarily for chemical or mathematical notation). May also replace lowercase characters with alphabetic inferiors. The application can use this feature to automatically access the inferior figures (more legible than scaled figures).
+		// size: null,
+			// Optical Size
+				// This feature stores two kinds of information about the optical size of the font: design size (the point size for which the font is optimized) and size range (the range of point sizes which the font can serve well), as well as other information which helps applications use the size range. The design size is useful for determining proper tracking behavior. The size range is useful in families which have fonts covering several ranges. Additional values serve to identify the set of fonts which share related size ranges, and to identify their shared name. Note that sizes refer to nominal final output size, and are independent of viewing magnification or resolution. Required implementation: The Feature table of this GPOS feature contains no lookups; its Feature Parameters field records an offset from the beginning of the Feature table to an array of five 16-bit unsigned integer values. The size feature must be implemented in all fonts in any family which uses the feature. In this usage, a family is a set of fonts which share a Preferred Family name (name ID 16), or Font Family name (name ID 1) if the Preferred Family name is absent.&amp;lt;BR&amp;gt; The first value represents the design size in 720/inch units (decipoints). The design size entry must be non-zero. When there is a design size but no recommended size range, the rest of the array will consist of zeros. The second value has no independent meaning, but serves as an identifier that associates fonts in a subfamily. All fonts which share a Preferred or Font Family name and which differ only by size range shall have the same subfamily value, and no fonts which differ in weight or style shall have the same subfamily value. If this value is zero, the remaining fields in the array will be ignored. The third value enables applications to use a single name for the subfamily identified by the second value. If the preceding value is non-zero, this value must be set in the range 256 - 32767 (inclusive). It records the value of a field in the name table, which must contain English-language strings encoded in Windows Unicode and Macintosh Roman, and may contain additional strings localized to other scripts and languages. Each of these strings is the name an application should use, in combination with the family name, to represent the subfamily in a menu. Applications will choose the appropriate version based on their selection criteria. The fourth and fifth values represent the small end of the recommended usage range (exclusive) and the large end of the recommended usage range (inclusive), stored in 720/inch units (decipoints). Ranges must not overlap, and should generally be contiguous. The size information in Bell Centennial is [60 0 0 0 0]. This tells an application that the fontâs design size is six points, so larger sizes may need proportionate reduction in default inter-glyph spacing. The size information in Minion Pro Semibold Condensed Subhead is [180 3 257 139 240]. These values tell an application that: The font's design size is 18 points; This font is part of a subfamily of fonts that differ only by the size range which each covers, and which share the arbitrary identifier number 3; ID 257 in the name table is the suggested menu name for this subfamily. In this case, the string at name ID 257 is Semibold Condensed; This font is the recommended choice from sizes greater than 13.9-point up through 24-points. 
+		// smcp: null,
+			// Small Capitals
+				// This feature turns lowercase characters into small capitals. This corresponds to the common SC font layout. It is generally used for display lines set in Large &amp; small caps, such as titles. Forms related to small capitals, such as oldstyle figures, may be included. The user enters text as mixed capitals and lowercase, and gets Large &amp; small cap text.
+		// smpl: null,
+			// Simplified Forms
+				// Replaces 'traditional' Chinese or Japanese forms with the corresponding 'simplified' forms. The user gets U+53F0 when U+6AAF, U+81FA, or U+98B1 is entered.
+		// ss00: null,
+			// Sylistic Set
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss01: null,
+			// Sylistic Set 1
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss02: null,
+			// Sylistic Set 2
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss03: null,
+			// Sylistic Set 3
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss04: null,
+			// Sylistic Set 4
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss05: null,
+			// Sylistic Set 5
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss06: null,
+			// Sylistic Set 6
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss07: null,
+			// Sylistic Set 7
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss08: null,
+			// Sylistic Set 8
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss09: null,
+			// Sylistic Set 9
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss10: null,
+			// Sylistic Set 10
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss11: null,
+			// Sylistic Set 11
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss12: null,
+			// Sylistic Set 12
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss13: null,
+			// Sylistic Set 13
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss14: null,
+			// Sylistic Set 14
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss15: null,
+			// Sylistic Set 15
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss16: null,
+			// Sylistic Set 16
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss17: null,
+			// Sylistic Set 17
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss18: null,
+			// Sylistic Set 18
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss19: null,
+			// Sylistic Set 19
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// ss20: null,
+			// Sylistic Set 20
+				// In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, e.g. multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets.
+		// subs: null,
+			// Subscript
+				// The "subs" feature may replace a default glyph with a subscript glyph, or it may combine a glyph substitution with positioning adjustments for proper placement. Recommended implementation: First, a single or contextual substitution lookup implements the subscript glyph (GSUB lookup type 1). Then, if the glyph needs repositioning, an application may apply a single adjustment, pair adjustment, or contextual adjustment positioning lookup to modify its position.
+		// sups: null,
+			// Superscript
+				// Replaces lining or oldstyle figures with superior figures (primarily for footnote indication), and replaces lowercase letters with superior letters (primarily for abbreviated French titles). The application can use this feature to automatically access the superior figures (more legible than scaled figures) for footnotes, or the user can apply it to Mssr to get the classic form.
+		// swsh: null,
+			// Swash
+				// This feature replaces default character glyphs with corresponding swash glyphs. Note that there may be more than one swash alternate for a given character. The user inputs the ampersand character when setting text with Poetica with this feature active, and is presented with a choice of the 63 ampersand forms in that face.
+		// titl: null,
+			// Titling
+				// This feature replaces the default glyphs with corresponding forms designed specifically for titling. These may be all-capital and/or larger on the body, and adjusted for viewing at larger sizes. The user applies this feature in Adobe Garamond to get the titling caps.
+		// tjmo: null,
+			// Trailing Jamo Forms
+				// Substitutes the trailing jamo form of a cluster. In Hangul script, the jamo cluster is composed of three parts (leading consonant, vowel, and trailing consonant). When a sequence of trailing class jamos are found, their combined trailing jamo form is substituted. 
+		// tnam: null,
+			// Traditional Name Forms
+				// Replaces 'simplified' Japanese kanji forms with the corresponding 'traditional' forms. This is equivalent to the Traditional Forms feature, but explicitly limited to the traditional forms considered proper for use in personal names (as many as 205 glyphs in some fonts). The user inputs U+4E9C and gets U+4E9E.
+		// tnum: null,
+			// Tabular Figures
+				// Replaces figure glyphs set on proportional widths with corresponding glyphs set on uniform (tabular) widths. Tabular widths will generally be the default, but this cannot be safely assumed. Of course this feature would not be present in monospaced designs. The user may apply this feature to get oldstyle figures to align vertically in a column.
+		// trad: null,
+			// Traditional Forms
+				// Replaces 'simplified' Chinese hanzi or Japanese kanji forms with the corresponding 'traditional' forms. The user inputs U+53F0 and is offered a choice of U+6AAF, U+81FA, or U+98B1.
+		// twid: null,
+			// Third Widths
+				// Replaces glyphs on other widths with glyphs set on widths of one third of an em. The characters involved are normally figures and some forms of punctuation. The user may apply twid to place a three-digit figure in a single slot in a column of vertical text.
+		// unic: null,
+			// Unicase
+				// This feature maps upper- and lowercase letters to a mixed set of lowercase and small capital forms, resulting in a single case alphabet (for an example of unicase, see the Emigre type family Filosofia). The letters substituted may vary from font to font, as appropriate to the design. If aligning to the x-height, smallcap glyphs may be substituted, or specially designed unicase forms might be used. Substitutions might also include specially designed figures. The user enters text as uppercase, lowercase or mixed case, and gets unicase text.
+		// valt: null,
+			// Alternate Vertical Metrics
+				// Repositions glyphs to visually center them within full-height metrics, for use in vertical setting. Typically applies to full-width Latin glyphs, which are aligned on a common horizontal baseline and not rotated when set vertically in CJKV fonts. Applying this feature would shift a Roman h down, or y up, from their default full-width positions.
+		// vatu: null,
+			// Vattu Variants
+				// Substitutes ligatures for conjuncts made up of base consonants with consonants that have vattu forms. In the Devanagari (Indic) script, the consonant Ra takes a vattu form, when it is not the syllable initial consonant in a conjunct. This form ligates with the base consonant as well as half forms of consonants.
+		// vert: null,
+			// Vertical Writing
+				// Replaces default forms with variants adjusted for vertical writing when in vertical writing mode. While most CJKV glyphs remain vertical when set in vertical writing mode, some take a different form (usually rotated and repositioned) for this purpose. Glyphs covered by this feature correspond to the set normally rotated in low-end DTP applications. In vertical writing mode, the opening parenthesis (U+FF08) is replaced by the rotated form (U+FE35).
+		// vhal: null,
+			// Alternate Vertical Half Metrics
+				// Respaces glyphs designed to be set on full-em heights, fitting them onto half-em heights. This differs from valt in that it does not substitute new glyphs. The user may invoke this feature in a CJKV font to get better fit for punctuation or symbol glyphs without disrupting the monospaced alignment.
+		// vjmo: null,
+			// Vowel Jamo Forms
+				// Substitutes the vowel jamo form of a cluster. In Hangul script, the jamo cluster is composed of three parts (leading consonant, vowel, and trailing consonant). When a sequence of vowel class jamos are found, their combined vowel jamo form is substituted.
+		// vkna: null,
+			// Vertical Kana Alternates
+				// Replaces standard kana with forms that have been specially designed for only vertical writing. This is a typographic optimization for improved fit and more even color. Standard full-width kana (hiragana and katakana) are replaced by forms that are designed for vertical use.
+		// vkrn: null,
+			// Vertical Kerning
+				// Adjusts amount of space between glyphs, generally to provide optically consistent spacing between glyphs. Although a well-designed typeface has consistent inter-glyph spacing overall, some glyph combinations require adjustment for improved legibility. Besides standard adjustment in the vertical direction, this feature can supply size-dependent kerning data via device tables, "cross-stream" kerning in the X text direction, and adjustment of glyph placement independent of the advance adjustment. Note that this feature may apply to runs of more than two glyphs, and would not be used in monospaced fonts. Also note that this feature applies only to text set vertically. When the katakana character U+30B9 or U+30D8 is followed by U+30C8 in a vertical setting, U+30C8 is shifted up to fit more evenly.
+		// vpal: null,
+			// Proportional Alternate Vertical Metrics
+				// Respaces glyphs designed to be set on full-em heights, fitting them onto individual (more or less proportional) vertical heights. This differs from valt in that it does not substitute new glyphs (GPOS, not GSUB feature). The user may prefer the monospaced form, or may simply want to ensure that the glyph is well-fit. The user may invoke this feature in a Japanese font to get Latin, Kanji, Kana or Symbol glyphs with the full-height design but individual metrics.
+		// vrt2: null,
+			// Vertical Rotation
+				// Replaces some fixed-width (half-, third- or quarter-width) or proportional-width glyphs (mostly Latin or katakana) with forms suitable for vertical writing (that is, rotated 90 degrees clockwise). Note that these are a superset of the glyphs covered in the vert table. ATM/NT 4.1 and the Windows 2000 OTF driver impose the following requirements for an OpenType font with CFF outlines to be used for vertical writing: the vrt2 feature must be present in the GSUB table, it must comprises a single lookup of LookupType 1 and LookupFlag 0, and the lookup must have a single subtable. The predecessor feature, vert, is ignored. A rotated glyph must be designed such that its top side bearing and vertical advance as recorded in the Vertical Metrics ('vmtx') table are identical to the left side bearing and horizontal advance, respectively, of the corresponding upright glyph as recorded in the Horizontal Metrics ('hmtx') table. (The horizontal advance of the rotated glyph may be set to any value, since the glyph is intended only for vertical writing use. The vendor may however set it to head.unitsPerEm, to prevent overlap during font proofing tests, for example.) Thus, proportional-width glyphs with rotated forms in the vrt2 feature will appear identically spaced in both vertical and horizontal writing. In order for kerning to produce identical results as well, developers must ensure that the Vertical Kerning (vkrn) feature record kern values between the rotated glyphs that are the same as kern values between their corresponding upright glyphs in the Kerning (kern) feature. Proportional- or half-width Latin and half-width katakana characters are rotated 90 degrees clockwise for vertical writing.
+		// xx00: null,
+			// 
+				// 
+		// xx01: null,
+			// 
+				// 
+		// zero: null,
+			// Slashed Zero
+				// Some fonts contain both a default form of zero, and an alternative form which uses a diagonal slash through the counter. Especially in condensed designs, it can be difficult to distinguish between 0 and O (zero and capital O) in any situation where capitals and lining figures may be arbitrarily mixed. This feature allows the user to change from the default 0 to a slashed form. When setting labels, the user applies this feature to get the slashed 0.
+	),
+	prefix: (
+		appearance: (webkit, moz),
+		column: (webkit, moz),
+		font-feature-settings: (webkit),
+		hyphens: (webkit, ms),
+		text-decoration: (webkit),
+	),
+	px-to-rem-limit: 5,
+	// ratio: (
+	// 	default: (
+	// 		0: ratio major-second,
+	// 	),
+	// 	// default: (
+	// 	// 	0: ratio major-second,
+	// 	// 	6: ratio major-third,
+	// 	// 	8: ratio fourth,
+	// 	// 	10: ratio augmented-fourth,
+	// 	// 	12: ratio golden,
+	// 	// ),
+	// 	double-octave:		4,				//* 1:4
+	// 	major-twelfth:		3,				//* 1:3
+	// 	major-eleventh:		2.666666667,	//* 3:8
+	// 	major-tenth:		2.5,			//* 2:5
+	// 	octave:				2,				//* 1:2
+	// 	major-seventh:		1.875,			//* 8:15
+	// 	minor-seventh:		1.777777778,	//* 9:16
+	// 	major-sixth:		1.666666667,	//* 3:5
+	// 	phi:				1.618034, 		//* 1:1.618
+	// 	golden:				1.618034, 		//* 1:1.618
+	// 	minor-sixth:		1.6,			//* 5:8
+	// 	fifth:				1.5,			//* 2:3
+	// 	augmented-fourth:	1.41421,		//* 1:√2
+	// 	fourth:				1.333333333,	//* 3:4
+	// 	major-third:		1.25,			//* 4:5
+	// 	minor-third:		1.2,			//* 5:6
+	// 	major-second:		1.125,			//* 8:9
+	// 	minor-second:		1.066666667,	//* 15:16
+	// ),
+	speed: (
+		tick: 200ms,
+		fast: 200ms,
+		medium: 400ms,
+		slow: 600ms,
+		test: 1s,
+	),
+	text: (
+		indent: 2,
+		limit: 40em, //* 65 to 80 characters / 9 to 12 words
+		hyphens: auto,
+		letter-spacing: (
+			small-caps: .03em,
+			caps: .03em,
+		),	
+		list-image: bull,
+		// multicolumn: ( //* number of columns: from breakpoint
+		// 	2: 8,
+		// 	3: 10,
+		// 	4: 12,
+		// ),
+		ol: decimal,
+		// sup-position: -0.5em,
+		// sub-position: -0.25em,
+		rendering: optimizeLegibility,
+	),
+	timing: (
+		arc: (
+			in: cubic-bezier(0,1,1,1),
+			out: cubic-bezier(1,0,1,1),
+		),
+		bounce: (
+			in: cubic-bezier(.5,0,.5,-.5),
+			out: cubic-bezier(.5,1.5,.5,1),
+		),
+		default: ease-in-out,
+        //* https://css-tricks.com/snippets/sass/easing-map-get-function/
+		ease: (
+			in: (
+				quad:  cubic-bezier(0.550,  0.085, 0.680, 0.530),
+				cubic: cubic-bezier(0.550,  0.055, 0.675, 0.190),
+				quart: cubic-bezier(0.895,  0.030, 0.685, 0.220),
+				quint: cubic-bezier(0.755,  0.050, 0.855, 0.060),
+				sine:  cubic-bezier(0.470,  0.000, 0.745, 0.715),
+				expo:  cubic-bezier(0.950,  0.050, 0.795, 0.035),
+				circ:  cubic-bezier(0.600,  0.040, 0.980, 0.335),
+				back:  cubic-bezier(0.600, -0.280, 0.735, 0.045),
+			),
+			out: (
+				quad:  cubic-bezier(0.250,  0.460, 0.450, 0.940),
+				cubic: cubic-bezier(0.215,  0.610, 0.355, 1.000),
+				quart: cubic-bezier(0.165,  0.840, 0.440, 1.000),
+				quint: cubic-bezier(0.230,  1.000, 0.320, 1.000),
+				sine:  cubic-bezier(0.390,  0.575, 0.565, 1.000),
+				expo:  cubic-bezier(0.190,  1.000, 0.220, 1.000),
+				circ:  cubic-bezier(0.075,  0.820, 0.165, 1.000),
+				back:  cubic-bezier(0.175,  0.885, 0.320, 1.275),
+			),
+			in-out: (
+				quad:  cubic-bezier(0.455,  0.030, 0.515, 0.955),
+				cubic: cubic-bezier(0.645,  0.045, 0.355, 1.000),
+				quart: cubic-bezier(0.770,  0.000, 0.175, 1.000),
+				quint: cubic-bezier(0.860,  0.000, 0.070, 1.000),
+				sine:  cubic-bezier(0.445,  0.050, 0.550, 0.950),
+				expo:  cubic-bezier(1.000,  0.000, 0.000, 1.000),
+				circ:  cubic-bezier(0.785,  0.135, 0.150, 0.860),
+				back:  cubic-bezier(0.680, -0.550, 0.265, 1.550)
+			),
+		),
+        ease-in: ease-in,
+        ease-in-out: ease-in-out,
+        ease-out: ease-out,
+		jump: (
+			in: cubic-bezier(0,0,.5,-.5),
+			in-out: cubic-bezier(.5,-.5,.5,1.5),
+			out: cubic-bezier(.5,1.5,1,1),
+		),
+        linear: linear,
+		pop: (
+			in: cubic-bezier(0,.5,.5,0),
+			out: cubic-bezier(.5,0,0,.5),
+		),
+	),
+);

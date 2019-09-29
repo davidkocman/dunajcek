@@ -1,0 +1,3 @@
+@mixin grid($value) {
+    @include css-group(grid, $value);
+}

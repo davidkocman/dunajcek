@@ -1,0 +1,16 @@
+/*
+ * Returns hex value of a characters or multiple characters.
+ * 1. Fallback is an empty string.
+ * 2. Warns, if you try to use an undefined character.
+ */
+@function char($value) {
+    $result: ''; /* 1 */
+    @each $char in list($value) {
+        @if get(char $char) {
+            $result: $result + get(char $char);
+        } @else {
+            @warn "Character '#{$char}' not found."; /* 2 */
+        }
+    }
+    @return $result;
+}

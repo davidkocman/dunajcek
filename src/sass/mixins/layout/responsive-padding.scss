@@ -1,0 +1,13 @@
+@mixin responsive-padding($val, $gaps: get(gap)) {
+    @each $breakpoint in map-keys($gaps) {
+        @include responsive-output($breakpoint) {
+            @each $side in map-fetch($variables, direction $val) {
+                $gap: get($gaps $breakpoint);
+                @if (type-of($gap) == number) and unitless($gap) {
+                    $gap: rhythm($gap);
+                }
+                padding-#{$side}: $gap;
+            }
+        }
+    }
+}

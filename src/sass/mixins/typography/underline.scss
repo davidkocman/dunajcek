@@ -1,0 +1,12 @@
+@mixin underline($color: currentColor, $style: solid) {
+	// @include prefix(text-decoration-color, $color);
+	// @include prefix(text-decoration-skip, ink);
+	// @include prefix(text-decoration-style, $style);
+	@include text-decoration((
+		value: underline,
+		color: $color,
+		skip: ink,
+		style: $style,
+	));
+	// text-decoration: underline;
+}

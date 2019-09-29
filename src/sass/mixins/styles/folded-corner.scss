@@ -1,0 +1,31 @@
+@mixin folded-corner($angle: 45deg, $size: r(1), $bg: white, $corner-bg: $bg) {
+    @if $angle == 45deg {
+        $corner-size: $size / sqrt(2);
+        background: 
+            linear-gradient(to left bottom, 
+                transparent 50%, $corner-bg 0)
+                no-repeat 100% 0 unquote('/') $size $size,
+            linear-gradient(-135deg, 
+                transparent $corner-size, $bg 0);
+    } @else {
+        position: relative;
+        background: $bg;
+        background: 
+            linear-gradient($angle - 180deg,
+                transparent $size, $bg 0);
+        $x: $size / sin($angle);
+        $y: $size / cos($angle);
+        &::before {
+            @include position(0 0 _ _, absolute);
+            @include size($y $x);
+            background: linear-gradient(to left bottom, transparent 50%, $corner-bg 0) 100% 0 no-repeat;
+            content: '';
+            @include transform((
+                value: translateY($y - $x) rotate(2*$angle - 90deg),
+                origin: bottom right,
+            ));
+            transform: translateY($y - $x) rotate(2*$angle - 90deg);
+            transform-origin: bottom right;
+        }
+    }
+}

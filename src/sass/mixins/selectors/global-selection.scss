@@ -1,0 +1,16 @@
+@mixin global-selection($background-color: get(color selection background-color), $color: get(color selection color)) {
+	$background-color: color($background-color);
+	$color: color($color);
+	@if $color == auto {
+		$color: contrasting-color($background-color);
+	}
+	::-moz-selection {
+	    color: $color;
+	    background: $background-color;
+	}
+
+	::selection {
+	    color: $color; 
+	    background: $background-color;
+	}
+}

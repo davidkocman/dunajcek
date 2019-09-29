@@ -1,0 +1,6 @@
+/*
+ * Get the x-height of a font
+ */
+@function x-height($font: body) {
+	@return get(font $font x-height);
+}

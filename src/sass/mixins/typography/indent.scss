@@ -1,0 +1,11 @@
+@mixin indent($value: get(text indent)) {
+    @if type-of($value) == number {
+        text-indent: r($value);
+    } @else {
+        @each $breakpoint in map-keys($value) {
+            @include bp($breakpoint) {
+                text-indent: r(get($value $breakpoint));
+            }
+        }
+    }
+}

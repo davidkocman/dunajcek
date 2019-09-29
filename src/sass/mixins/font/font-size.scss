@@ -1,0 +1,20 @@
+@mixin font-size($value: 1) {
+    $values: map($value);
+    $last-font-size: null;
+    $last-line-height: null;
+    @each $breakpoint in map-keys($values) {
+        $value: get($values $breakpoint);
+        $font-size: font-size(first($value));
+        $line-height: line-height(if(is($value, list), nth($value, 2), null), $font-size);
+        @include bp($breakpoint) {
+            @if $font-size and $font-size != $last-font-size {
+                $last-font-size: $font-size;
+                font-size: $font-size;
+            }
+            @if $line-height and $line-height != $last-line-height {
+                $last-line-height: $line-height;
+                line-height: $line-height;
+            }
+        }
+    }
+}

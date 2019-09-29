@@ -1,0 +1,32 @@
+/*
+ * Convert input value to vw
+ *
+ * 1. Convert unitless value to vw
+ * 2. Get percentage and convert it to vw
+ *
+ * Example usage:
+ * width: vw(3 of 12);
+ * width: vw(3 / 12);
+ * width: vw(25);
+ * Outputs:
+ * width: 25vw;
+ */
+@function vw($value: 100) {
+    @if 
+        length($value) == 1 and
+        type-of($value) == number and
+        unitless($value)
+    {
+        @return $value * 1vw; /* 1 */
+    } @else if
+        length($value) == 3 and
+        type-of(first($value)) == number and
+        type-of(last($value)) == number and
+        unitless(first($value)) and
+        unitless(last($value)) and
+        (nth($value, 2) == 'of' or nth($value, 2) == '/')
+    {
+        @return strip-unit(p($value)) * 1vw; /* 2 */
+    }
+    @error "Invalid value '#{$value}'";
+}

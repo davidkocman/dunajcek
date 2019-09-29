@@ -1,0 +1,3 @@
+@mixin background($value) {
+    @include css-group(background, $value);
+}

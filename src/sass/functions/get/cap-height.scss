@@ -1,0 +1,6 @@
+/*
+ * Get the cap-height of a font
+ */
+@function cap-height($font: body) {
+	@return get(font $font cap-height);
+}

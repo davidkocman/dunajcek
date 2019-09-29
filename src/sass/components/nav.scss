@@ -1,0 +1,39 @@
+nav {
+	@include fixed(0 0 _ 50%, 1);
+	@include padding(_ 4%);
+	@include size(auto 80px);
+	align-items: center;
+	background-color: color(white);
+	box-shadow: 0 10px 20px 0 rgba(227, 230, 237, 0.6);
+	display: flex;
+	justify-content: center;
+
+	ul {
+		@include size(100% _);
+		display: flex;
+		justify-content: space-between;
+		li {
+			a {
+				@include font((
+					appearance: bold,
+					family: script,
+					size: 14px
+				));
+				color: color(bold);
+				letter-spacing: 1px;
+				text-transform: uppercase;
+				&.active {
+					@include font((
+						appearance: bolder,
+						family: script,
+					));
+					border-bottom: 2px solid color(border);
+				}
+				&:focus,
+				&:hover {
+					border-bottom: 2px solid color(border);
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,31 @@
+@mixin flexgrid($flex: initial, $item: '.item') {
+    display: flex;
+    flex-wrap: wrap;
+    @if $flex != initial {
+        #{$item},
+        .placeholder {
+            // exact width
+            @if type-of($flex) == string {
+                flex: 0 0 $flex;
+            } @else if type-of($flex) == list {
+                // defined flex-grow and flex-shrink
+                flex: $flex;
+            } @else {
+                // set different values for different breakpoints
+                @each $breakpoint in map-keys($flex) {
+                    $value: map-get($flex, $breakpoint);
+                    // default mobile layout value without media query
+                    @include responsive-output($breakpoint) {
+                        // exact width
+                        @if type-of($value) == string {
+                            flex: 0 0 $value;
+                        } @else {
+                            // defined flex-grow and flex-shrink
+                            flex: $value;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+/*
+ * Returns number of lines into which minimal line height of this font-size 
+ * fits in
+ * 1. allow half line based on current configuration from variables
+ */
+@function lines-for-font-size($font-size) {
+	$font-size: rem($font-size);
+	$min-line-height: $font-size * get(min-line-height);
+	@if get(allow-half-line) { /* 1 */
+		@return ceil($min-line-height / (base(line-height) / 2)) / 2;
+	}
+	@return ceil($min-line-height / base(line-height));
+}

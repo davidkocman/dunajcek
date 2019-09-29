@@ -1,0 +1,23 @@
+@mixin debug($size: auto, $color: color(debug)) {
+    @if get(debug) {
+        @if $size == auto {
+            @if get(allow-half-line) {
+                $size: r(.5);
+            } @else {
+                $size: r(1);
+            }
+        }
+        position: relative;
+        &::after {
+            @include absolute(0, 1);
+            @include background((
+                image: linear-gradient(to top, $color 5%, transparent 5%) !important,
+                size: 100% $size !important,
+                position: left top !important,
+            ));
+            content: "";
+            display: block;
+            pointer-events: none;
+        }
+    }
+}

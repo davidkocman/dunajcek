@@ -1,0 +1,35 @@
+/*
+ * When getting value for a breakpoint and it's not defined for this breakpoint
+ * return the value from nearest lower breakpoint where it is defined
+ *
+ * 1. Check if the last value in input represents a breakpoint.
+ */
+@function get-last($value) { // TODO: remove this function
+    @if type-of(last($value)) == number and unitless(last($value)) {
+        $breakpoint: last($value);
+        // TODO: check the bugginess of this first(...)
+        $query: first(remove-last($value));
+        @while not get($query $breakpoint) and $breakpoint >= -1{
+            $breakpoint: $breakpoint - 1;
+        }
+        @return get($query $breakpoint);
+    }
+    @error "Last value of '#{$vlaue}' has to be a unitless number representing a breakpoint."
+}
+@function last-value($map, $breakpoint, $value) {
+    @if type-of($map) != map {
+        @error "First input value has to be a map.";
+    }
+    @if type-of($value) != string {
+        @error "Second value has to be a unitless number representing a breakpoint."
+    }
+    @if type-of($breakpoint) != number or not unitless($breakpoint) {
+        @error "Third input value has to be a string.";
+    }
+    // TODO: check the bugginess of this first(...)
+    // $query: first(remove-last($value));
+    @while not get($map $breakpoint $value) and $breakpoint >= -1{
+        $breakpoint: $breakpoint - 1;
+    }
+    @return get($map $breakpoint $value);
+}

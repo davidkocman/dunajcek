@@ -1,0 +1,10 @@
+@mixin inner-border-radius($bg: transparent, $radius: rhythm(1)) {
+	background: $bg;
+	background:
+		radial-gradient(circle at top left, transparent $radius, $bg 0) top left,
+		radial-gradient(circle at top right, transparent $radius, $bg 0) top right,
+		radial-gradient(circle at bottom right, transparent $radius, $bg 0) bottom right,
+		radial-gradient(circle at bottom left, transparent $radius, $bg 0) bottom left;
+	background-size: 50% 50%;
+	background-repeat: no-repeat;
+}

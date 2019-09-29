@@ -1,0 +1,9 @@
+/*
+ * Returns ratio from variables
+ */
+@function ratio($ratio) {
+	@if get(ratio $ratio) {
+		@return get(scale-ratio $ratio);
+	}
+	@error "Scale ratio '#{$ratio}' not found";
+}
