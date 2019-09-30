@@ -1,5 +1,5 @@
-const icons = document.querySelectorAll('.icon');
-const grahics = document.querySelectorAll('.graphic');
+var icons = document.querySelectorAll('.icon');
+var grahics = document.querySelectorAll('.graphic');
 window.sr = ScrollReveal();
 sr.reveal(icons, {
 	delay: 500,
