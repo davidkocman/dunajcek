@@ -1,9 +1,8 @@
 .content {
 	@include margin(80px _ _ _);
-	@include padding(54px 4%);
-	@include size(50% _);
-	float: right;
+	@include padding(54px 8%);
 	.intro {
+		@include min-size(_ 100vh);
 		.h {
 			@include font((
 				appearance: regular,
@@ -38,6 +37,117 @@
 				));
 				color: color(bold);
 			}
+		}
+		.icons {
+			column-gap: rem(40px);
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			.icon {
+				@include size(_ 162px);
+				align-items: center;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				img {
+					@include margin(_ _ 6px _);
+					@include size(106px 96px);
+				}
+				span {
+					@include font((
+						appearance: bold,
+						family: script,
+						size: 14px 16px,
+					));
+					color: color(bold);
+					letter-spacing: 0;
+					text-align: center;
+				}
+			}
+		}
+		.scroll {
+			@include margin(0 auto);
+			@include max-size(142px _);
+			align-items: center;
+			display: flex;
+			flex-direction: column;
+			span {
+				@include margin(_ _ 24px _);
+				@include font((
+					appearance: regular,
+					family: script,
+					size: 12px 16px,
+				));
+				color: color(regular);
+				letter-spacing: 0;
+				text-align: center;
+			}
+		}
+	}
+	.aktivity {
+		h2 {
+			@include margin(_ _ 14px _);
+			@include font((
+				appearance: bolder,
+				family: script,
+				size: 30px,
+			));
+			color: color(bold);
+			letter-spacing: 0;
+		}
+		h3 {
+			@include margin(_ _ 12px _);
+			@include font((
+				appearance: bold,
+				family: script,
+				size: 18px 28px,
+			));
+			color: #1c2d48;
+			letter-spacing: 0;
+		}
+		p {
+			@include margin(_ _ 30px _);
+			@include font((
+				appearance: regular,
+				family: script,
+				size: 14px 26px,
+			));
+			color: #475262;
+			letter-spacing: 0;
+		}
+		img {
+			@include margin(40px auto);
+		}
+	}
+	.firma {
+		h2 {
+			@include margin(_ _ 14px _);
+			@include font((
+				appearance: bolder,
+				family: script,
+				size: 30px,
+			));
+			color: color(bold);
+			letter-spacing: 0;
+		}
+		h3 {
+			@include margin(_ _ 20px _);
+			@include font((
+				appearance: bold,
+				family: script,
+				size: 16px 34px,
+			));
+			color: color(bold);
+			letter-spacing: 0;
+		}
+		p {
+			@include margin(_ _ 30px _);
+			@include font((
+				appearance: regular,
+				family: script,
+				size: 14px 26px,
+			));
+			color: #475262;
+			letter-spacing: 0;
 		}
 	}
 }

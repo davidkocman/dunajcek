@@ -7,7 +7,26 @@ nav {
 	box-shadow: 0 10px 20px 0 rgba(227, 230, 237, 0.6);
 	display: flex;
 	justify-content: center;
-
+	.element {
+		@include absolute(0 _ _ -80px, 1);
+		@include size(80px);
+		background-color: color(white);
+		span {
+			position: relative;
+			&::before,
+			&::after {
+				@include size(80px);
+				background-color: color(white .3);
+				content: '';
+			}
+			&::before {
+				@include absolute(0 _ _ -80px);
+			}
+			&::after {
+				@include absolute(80px _ -80px _);
+			}
+		}
+	}
 	ul {
 		@include size(100% _);
 		display: flex;

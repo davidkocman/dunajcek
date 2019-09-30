@@ -1,0 +1,67 @@
+.footer {
+	@include size(_ 100vh);
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	.map {
+		background-color: color(white);
+		z-index: 1;
+	}
+	.data {
+		@include padding(54px 8%);
+		background-color: color(white);
+		h2 {
+			@include margin(_ _ 14px _);
+			@include font((
+				appearance: bolder,
+				family: script,
+				size: 30px,
+			));
+			color: color(bold);
+			letter-spacing: 0;
+		}
+		p {
+			@include margin(_ _ 20px _);
+			@include font((
+				appearance: bold,
+				family: script,
+				size: 16px 34px,
+			));
+			color: color(bold);
+			letter-spacing: 0;
+		}
+		h3 {
+			@include margin(_ _ 10px _);
+			@include font((
+				appearance: bold,
+				family: script,
+				size: 18px 28px,
+			));
+			color: #1c2d48;
+			letter-spacing: 0;
+			span {
+				text-transform: uppercase;
+			}
+		}
+		ul {
+			@include margin(_ _ 120px _);
+			li {
+				@include font((
+					appearance: regular,
+					family: script,
+					size: 16px 36px,
+				));
+				color: color(regular);
+				letter-spacing: 0;
+				span {
+					@include font((
+						appearance: bold,
+					))
+				}
+			}
+		}
+		img {
+			@include margin(0 auto);
+			@include max-size(630px _)
+		}
+	}
+}
