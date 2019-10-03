@@ -1,27 +1,58 @@
+/// Mixin helping defining font-family, font-weight and font-size for specific breakpoints 
+///
+/// @author Some1
+///
+/// @access public
+///
+/// @param {Length} $width - Element’s `width`
+/// @param {Length} $height [$width] - Element’s `height`
+///
+/// @example scss - Usage
+///   .foo {
+///     @include font((
+///         appearance: bold,
+///         family: script,
+///         size: (
+///             0: 16px 30px,
+///             7: 18px 32px,
+///         )
+///     ));
+///   }
+///
+/// @example css - CSS output
+///   .foo {
+///		font-weight: 700;
+/// 	font-style: normal;
+/// 	font-family: "Montserrat", serif;
+/// 	font-size: 1rem;
+/// 	line-height: 1.5rem;
+///	  }
+///
+
 @mixin font($values) {
-    @each $property, $value in $values {
-        @if $property == appearance {
-            @include font-appearance((
-                appearance: $value,
-                family: get($values family),
-            ));
-        } @else if $property == baseline {
-            @include font-baseline((
-                appearance: get($values appearance),
-                family: if(get($value family), get($value family), get($values family)),
-                offset: get($value offset),
-                position: get($value position),
-                selector: get($value selector),
-                size: if(get($value size), get($value size), get($values size)),
-            ));
-        } @else if $property == family {
-            @include font-family($value);
-        } @else if $property == feature-settings {
-            @include font-feature-settings($value);
-        } @else if $property == size {
-            @include font-size($value);
-        } @else if $property == smoothing {
-            @include font-smoothing($value);
-        }       
-    }
+	@each $property, $value in $values {
+		@if $property == appearance {
+			@include font-appearance((
+				appearance: $value,
+				family: get($values family),
+			));
+		} @else if $property == baseline {
+			@include font-baseline((
+				appearance: get($values appearance),
+				family: if(get($value family), get($value family), get($values family)),
+				offset: get($value offset),
+				position: get($value position),
+				selector: get($value selector),
+				size: if(get($value size), get($value size), get($values size)),
+			));
+		} @else if $property == family {
+			@include font-family($value);
+		} @else if $property == feature-settings {
+			@include font-feature-settings($value);
+		} @else if $property == size {
+			@include font-size($value);
+		} @else if $property == smoothing {
+			@include font-smoothing($value);
+		}       
+	}
 }

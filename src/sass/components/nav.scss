@@ -1,14 +1,20 @@
 nav {
-	@include fixed(0 0 _ 50%, 1);
-	@include padding(_ 4%);
+	@include fixed(0 0 n 0, 2);
+	@include padding(n 4%);
 	@include size(auto 80px);
 	align-items: center;
 	background-color: color(white);
 	box-shadow: 0 10px 20px 0 rgba(227, 230, 237, 0.6);
 	display: flex;
-	justify-content: center;
+	justify-content: flex-end;
+	@include bp(7) {
+		justify-content: center;
+	}
+	@include bp(12) {
+		@include fixed(0 0 n 50%, 1);
+	}
 	.element {
-		@include absolute(0 _ _ -80px, 1);
+		@include absolute(0 n n -80px, 1);
 		@include size(80px);
 		background-color: color(white);
 		span {
@@ -20,17 +26,20 @@ nav {
 				content: '';
 			}
 			&::before {
-				@include absolute(0 _ _ -80px);
+				@include absolute(0 n n -80px);
 			}
 			&::after {
-				@include absolute(80px _ -80px _);
+				@include absolute(80px n -80px n);
 			}
 		}
 	}
 	ul {
-		@include size(100% _);
-		display: flex;
+		@include size(100% n);
+		display: none;
 		justify-content: space-between;
+		@include bp(7) {
+			display: flex
+		}
 		li {
 			a {
 				@include font((
@@ -53,6 +62,23 @@ nav {
 					border-bottom: 2px solid color(border);
 				}
 			}
+		}
+	}
+	.nav-toggle {
+		display: flex;
+		align-items: center;
+		@include bp(7) {
+			display: none;
+		}
+		span {
+			@include margin(n 8px n n);
+			@include font((
+				appearance: regular,
+				family: script,
+				size: 12px
+			));
+			color: #23344e;
+			letter-spacing: 0;
 		}
 	}
 }

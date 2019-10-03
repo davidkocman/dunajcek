@@ -1,70 +1,95 @@
 .slider {
-	@include max-size(_ 100vh);
-	@include sticky(0 _ _, 0);
+	@include max-size(n 100vh);
+	@include sticky(0 n n, 0);
+	display: none;
 	overflow: hidden;
+	@include bp(12) {
+		display: block;
+	}
 	img {
-		@include min-size(_ 100vh);
+		@include min-size(n 100vh);
 	}
 	.swiper-container {
-		@include size(100% 100vh);
-		position: relative;
-		.swiper-navigation {
-			@include absolute(_ 0 0 _, 1);
-			@include size(160px 80px);
-			align-items: center;
-			background-color: color(white);
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			&::before {
-				@include absolute(_ _ _ 50%, 1);
-				@include size(1px 26px);
-				content: '';
-				background-color: color(black);
-			}
-			.next {
-				transform: rotate(180deg);
-			}
-			.next,
-			.prev {
-				@include size(100%);
-				align-items: center;
-				cursor: pointer;
-				display: flex;
-				justify-content: center;
-				svg {
-					@include size(18px 10px);
-					transition: all speed(fast) timing(default);
-				}
-				&::after {
-					content: '';
-				}
-				&:focus,
-				&:hover {
-					svg {
-						transform: scale(1.2);
-					}
-				}
-			}
+		@include size(100% 100vh);	
+	}
+}
+.swiper-container {
+	@include size(100% n);
+	position: relative;
+	.swiper-slide {
+		img {
+			@include size(100% n);
 		}
+	}
+	&.mobile {
 		.swiper-pagination {
-			@include padding(_ _ _ 60px);
+			@include padding(n n n 30px);
 			@include font((
 				appearance: regular,
 				family: script,
-				size: 16px,
+				size: 12px,
 			));
-			color: color(white);
-			text-align: left;
-			letter-spacing: .5px;
-			z-index: 1;
-			.swiper-pagination-current {
-				@include font((
-					appearance: bolder,
-					family: script,
-					size: 40px
-				));
-				letter-spacing: 0;
+		}
+		.swiper-navigation {
+			@include size(120px 60px);	
+		}
+	}
+	.swiper-navigation {
+		@include absolute(n 0 0 n, 1);
+		@include size(160px 80px);
+		align-items: center;
+		background-color: color(white);
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		&::before {
+			@include absolute(n n n 50%, 1);
+			@include size(1px 26px);
+			content: '';
+			background-color: color(black);
+		}
+		.next {
+			transform: rotate(180deg);
+		}
+		.next,
+		.prev {
+			@include size(100%);
+			align-items: center;
+			cursor: pointer;
+			display: flex;
+			justify-content: center;
+			svg {
+				@include size(18px 10px);
+				transition: all speed(fast) timing(default);
 			}
+			&::after {
+				content: '';
+			}
+			&:focus,
+			&:hover {
+				svg {
+					transform: scale(1.2);
+				}
+			}
+		}
+	}
+	.swiper-pagination {
+		@include padding(n n n 60px);
+		@include font((
+			appearance: regular,
+			family: script,
+			size: 16px,
+		));
+		color: color(white);
+		text-align: left;
+		letter-spacing: .5px;
+		z-index: 1;
+		.swiper-pagination-current {
+			@include font((
+				appearance: bolder,
+				family: script,
+				size: 40px
+			));
+			letter-spacing: 0;
 		}
 	}
 }

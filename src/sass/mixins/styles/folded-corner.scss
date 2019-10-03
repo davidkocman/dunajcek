@@ -16,7 +16,7 @@
         $x: $size / sin($angle);
         $y: $size / cos($angle);
         &::before {
-            @include position(0 0 _ _, absolute);
+            @include position(0 0 n n, absolute);
             @include size($y $x);
             background: linear-gradient(to left bottom, transparent 50%, $corner-bg 0) 100% 0 no-repeat;
             content: '';

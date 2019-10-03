@@ -3,13 +3,16 @@ body {
 }
 body,
 html {
-	@include size(_ 100%);
+	@include size(n 100%);
 }
 main {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
 	grid-template-rows: max-content;
 	grid-template-areas: "slider content" "footer footer";
+	@include bp(12) {
+		grid-template-columns: 1fr 1fr;
+	}
 }
 .slider { grid-area: slider; }
 .content { grid-area: content; }

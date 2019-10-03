@@ -1,20 +1,20 @@
-@function get-value($value, $source) {
+@function get($value) {
+    $result: false;
+    @while get-value($value) {
+        $result: get-value($value);
+        $value: $result;
+    }
+    @return $result;
+}
+@function get-value($value) {
     @if type-of($value) != map {
         @if length($value) == 1 {
-            @return map-get($source, $value);
+            @return map-get($variables, $value);
         }
         @if type-of(first($value)) == string {
-            @return map-fetch($source, $value);
+            @return map-fetch($variables, $value);
         }
         @return map-fetch(first($value), slice($value, 2, length($value)));
     }
     @return false;
-}
-@function get($value, $source: $variables) {
-    $result: false;
-    @while get-value($value, $source) {
-        $result: get-value($value, $source);
-        $value: $result;
-    }
-    @return $result;
 }

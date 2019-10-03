@@ -1,4 +1,28 @@
 @mixin size($value, $important: null) {
-    @include width(first($value), $important);
-    @include height(last($value), $important);
+    $width: first($value);
+    $height: last($value);
+    @if is($width, number) {
+        @if is($width, unitless) {
+            $width: r($width);
+        } @else if is($width, px) and $width > 1 {
+            $width: rem($width);
+        } @else {
+            $width: $width;
+        }
+    }
+    @if is($height, number) {
+        @if is($height, unitless) {
+            $height: r($height);
+        } @else if is($height, px) and $height > 1 {
+            $height: rem($height);
+        } @else {
+            $height: $height;
+        }
+    }
+    @if $width != n {
+        width: $width $important;
+    }
+    @if $height != n {
+        height: $height $important;
+    }
 }

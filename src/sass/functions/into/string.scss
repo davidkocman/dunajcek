@@ -3,9 +3,9 @@
  */
 @function string($value, $separator: ' ', $is-nested: false) {
     @if is($value, list) {
-        $result: '';
+        $result: null;
         @for $i from 1 through length($value) {
-            $e: inspect(nth($value, $i));
+            $e: nth($value, $i);
             @if type-of($e) == list {
                 $result: $result#{to-string($e, $separator, true)};
             } @else {

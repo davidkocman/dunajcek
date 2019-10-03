@@ -1,31 +1,35 @@
-//* pass _ to ommit sides
-
 @mixin spacing($property, $raw-value: 0, $important: null) {
+    //* pass 'n' to ommit sides
     $value: ();
     $shortnotation: true;
     @each $val in list($raw-value) {
-        @if is-_($val) {
+        @if $val == n {
             $shortnotation: false;
-        }
-        @if is-unitless($val) {
-            $val: r($val);
-        }
-        @if is-px($val) and $val >= get(px-to-rem-limit) {
-            $val: rem($val);
+        } @else if $val != auto {
+            @if unitless($val) {
+                $val: r($val);
+            } @else {
+                @if type-of($val) != number {
+                    $val: number($val);
+                }
+                @if unit($val) == px {
+                    $val: rem($val);
+                }
+            }
         }
         $value: append($value, $val);
     }
     @if $shortnotation {
-        #{$property}: inspect($value) $important;
+        #{$property}: unquote(string($value)) $important;
     } @else {
         @if length($value) == 2 {
             $y: nth($value, 1);
             $x: nth($value, 2);
-            @if not is-_($y) {
+            @if $y != n {
                 #{$property+'-top'}: $y $important;
                 #{$property+'-bottom'}: $y $important;
             }
-            @if not is-_($x) {
+            @if $x != n {
                 #{$property+'-right'}: $x $important;
                 #{$property+'-left'}: $x $important;
             }
@@ -33,14 +37,14 @@
             $t: nth($value, 1);
             $x: nth($value, 2);
             $b: nth($value, 3);
-            @if not is-_($t) {
+            @if $t != n {
                 #{$property+'-top'}: $t $important;
             }
-            @if not is-_($x) {
+            @if $x != n {
                 #{$property+'-right'}: $x $important;
                 #{$property+'-left'}: $x $important;
             }
-            @if not is-_($b) {
+            @if $b != n {
                 #{$property+'-bottom'}: $b $important;
             }
         } @else if length($value) == 4 {
@@ -48,16 +52,16 @@
             $r: nth($value, 2);
             $b: nth($value, 3);
             $l: nth($value, 4);
-            @if not is-_($t) {
+            @if $t != n {
                 #{$property+'-top'}: $t $important;
             }
-            @if not is-_($r) {
+            @if $r != n {
                 #{$property+'-right'}: $r $important;
             }
-            @if not is-_($b) {
+            @if $b != n {
                 #{$property+'-bottom'}: $b $important;
             }
-            @if not is-_($l) {
+            @if $l != n {
                 #{$property+'-left'}: $l $important;
             }
         }

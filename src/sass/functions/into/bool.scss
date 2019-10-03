@@ -5,7 +5,7 @@
 	@if $value == yes or $value == y {
 		@return true;
 	}
-	@if $value == no or is-_($value) {
+	@if $value == no or $value == n {
 		@return false;
 	}
 	@if $value {

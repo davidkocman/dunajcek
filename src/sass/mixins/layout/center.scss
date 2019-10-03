@@ -1,4 +1,4 @@
-@mixin center($axis: xy, $position: relative, $z-index: _) {
+@mixin center($axis: xy, $position: relative, $z-index: n) {
     @if $position == flex {
         display: flex;
         @if ($axis == x) {
@@ -29,7 +29,7 @@
     } @else {
         @error "Invalid value '#{$position}'";
     }
-    @if not is-_($z-index) {
+    @if $z-index != n {
         z-index: $z-index;
     }
 }

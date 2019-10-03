@@ -1,4 +1,24 @@
 @mixin min-size($value, $important: null) {
-    @include min-width(first($value), $important);
-    @include min-height(last($value), $important);
+    $width: first($value);
+    $height: last($value);
+        @if type-of($width) == number {
+            @if unitless($width) {
+                    $width: r($width);
+            } @else if unit($width) == px {
+                $width: rem($width);
+            }
+        }
+        @if type-of($height) == number {
+            @if unitless($height) {
+                    $height: r($height);
+            } @else if unit($height) == px {
+                $height: rem($height);
+            }
+        }
+    @if $width != n {
+        min-width: $width $important;
+    }
+    @if $height != n {
+        min-height: $height $important;
+    }
 }

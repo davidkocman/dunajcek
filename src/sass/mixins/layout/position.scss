@@ -10,28 +10,22 @@ Examples:
     right: 1rem;
     bottom: 0;
     left: 1rem;
-@include position(0 1rem _);
+@include position(0 1rem n);
     top: 0;
     right: 1rem;
     left: 1rem;
-@include position(0 _ _ 1rem);
+@include position(0 n n 1rem);
     top: 0;
     left: 1rem;
 */
-@mixin position($raw-value: _, $position: null, $z-index: null) {
-    $value: ();
-    @each $val in list($raw-value) {
-        @if is-unitless($val) {
-            $val: r($val);
-        }
-        @if is-px($val) and $val >= get(px-to-rem-limit) {
-            $val: rem($val);
-        }
-        $value: append($value, $val);
-    }
+@mixin position($value: n, $position: null, $z-index: null) {
     @if length($value) == 1 {
-        $value: first($value);
-        @if not is-_($value) {
+        @if $value != n {
+            @if $value != auto {
+                @if unitless($value) {
+                    $value: r($value);
+                }
+            }
             top: $value;
             right: $value;
             bottom: $value;
@@ -40,11 +34,21 @@ Examples:
     } @else if length($value) == 2 {
         $top-bottom: nth($value, 1);
         $right-left: nth($value, 2);
-        @if not is-_($top-bottom) {
+        @if $top-bottom != n {
+            @if $right-left != auto {
+                @if unitless($top-bottom) {
+                    $top-bottom: r($top-bottom);
+                }
+            }
             top: $top-bottom;
             bottom: $top-bottom;
         }
-        @if not is-_($right-left) {
+        @if $right-left != n {
+            @if $right-left != auto {
+                @if unitless($right-left) {
+                    $right-left: r($right-left);
+                }
+            }
             right: $right-left;
             left: $right-left;
         }
@@ -52,14 +56,29 @@ Examples:
         $top: nth($value, 1);
         $right-left: nth($value, 2);
         $bottom: nth($value, 3);
-        @if not is-_($top) {
+        @if $top != n {
+            @if $top != auto {
+                @if unitless($top) {
+                    $top: r($top);
+                }
+            }
             top: $top;
         }
-        @if not is-_($right-left) {
+        @if $right-left != n {
+            @if $right-left != auto {
+                @if unitless($right-left) {
+                    $right-left: r($right-left);
+                }
+            }
             right: $right-left;
             left: $right-left;
         }
-        @if not is-_($bottom) {
+        @if $bottom != n {
+            @if $bottom != auto {
+                @if unitless($bottom) {
+                    $bottom: r($bottom);
+                }
+            }
             bottom: $bottom;
         }
     } @else if length($value) == 4 {
@@ -67,16 +86,36 @@ Examples:
         $right: nth($value, 2);
         $bottom: nth($value, 3);
         $left: nth($value, 4);
-        @if not is-_($top) {
+        @if $top != n {
+            @if $top != auto {
+                @if unitless($top) {
+                    $top: r($top);
+                }
+            }
             top: $top;
         }
-        @if not is-_($right) {
+        @if $right != n {
+            @if $right != auto {
+                @if unitless($right) {
+                    $right: r($right);
+                }
+            }
             right: $right;
         }
-        @if not is-_($bottom) {
+        @if $bottom != n {
+            @if $bottom != auto {
+                @if unitless($bottom) {
+                    $bottom: r($bottom);
+                }
+            }
             bottom: $bottom;
         }
-        @if not is-_($left) {
+        @if $left != n {
+            @if $left != auto {
+                @if unitless($left) {
+                    $left: r($left);
+                }
+            }
             left: $left;
         }
     }

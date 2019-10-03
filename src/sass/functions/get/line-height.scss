@@ -1,7 +1,4 @@
 @function line-height($line-height: 1, $font-size: 1) {
-    @if 0 == $font-size {
-        @return 0;
-    }
     @if $line-height {
         @if is($line-height, number) {
             @if is($line-height, unitless) {
@@ -11,7 +8,7 @@
                 @return rem($line-height);
             }
         }
-        @if is-_($line-height) {
+        @if is($line-height, n) {
             @return null;
         }
         @return $line-height;

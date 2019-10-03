@@ -1,6 +1,15 @@
 /*
  * Returns base font-size and line-height in rem from variables.
  */
+@function base($value: font-size, $unit: rem) {
+    @if $value == font-size {
+        @return base-font-size($unit);
+    }
+    @if $value == line-height {
+        @return base-line-height($unit);
+    }
+}
+
 @function base-font-size($unit) {
     $base: get(base font-size);
     @if type-of($base) == number {
@@ -168,12 +177,3 @@
     }
     @error "Base line-height has to be a number.";
 }
-@function base($value: font-size, $unit: rem) {
-    @if $value == font-size {
-        @return base-font-size($unit);
-    }
-    @if $value == line-height {
-        @return base-line-height($unit);
-    }
-}
-

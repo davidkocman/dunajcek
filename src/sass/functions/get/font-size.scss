@@ -1,8 +1,10 @@
 @function font-size($size: 1) {
-    @if is-unitless($size) or is-px($size) {
-        @return rem($size);
+    @if is($size, number) {
+        @if is($size, unitless) or is($size, px) {
+            @return rem($size);
+        }
     }
-    @if is-_($size) {
+    @if is($size, n) {
         @return null;
     }
 	@return $size;

@@ -1,9 +1,10 @@
 .content {
-	@include margin(80px _ _ _);
+	@include margin(80px n n n);
 	@include padding(54px 8%);
 	.intro {
-		@include min-size(_ 100vh);
+		@include min-size(n calc(100vh - 80px));
 		.h {
+			@include margin(n n 16px n);
 			@include font((
 				appearance: regular,
 				family: script,
@@ -12,6 +13,9 @@
 			letter-spacing: 0;
 			text-transform: uppercase;
 			color: #162848;
+			@include bp(4) {
+				@include margin(n n 0 n);
+			}
 			span {
 				@include font((
 					appearance: bold,
@@ -20,10 +24,13 @@
 			}
 		}
 		.logo {
-			@include margin(_ _ 62px _);
+			@include margin(n n 62px n);
+			img {
+				@include max-size(100% n);
+			}
 		}
 		p {
-			@include margin(_ _ 20px _);
+			@include margin(n n 20px n);
 			@include font((
 				appearance: regular,
 				family: script,
@@ -38,18 +45,30 @@
 				color: color(bold);
 			}
 		}
+		.swiper-container {
+			&.mobile {
+				@include margin(0 auto);
+				display: block;
+				@include bp(12) {
+					display: none;
+				}
+			}
+		}
 		.icons {
 			column-gap: rem(40px);
 			display: grid;
-			grid-template-columns: repeat(4, 1fr);
+			grid-template-columns: repeat(2, 1fr);
+			@include bp(6) {
+				grid-template-columns: repeat(4, 1fr);
+			}
 			.icon {
-				@include size(_ 162px);
+				@include size(n 162px);
 				align-items: center;
 				display: flex;
 				flex-direction: column;
 				justify-content: flex-start;
 				img {
-					@include margin(_ _ 6px _);
+					@include margin(n n 6px n);
 					@include size(106px 96px);
 				}
 				span {
@@ -66,12 +85,15 @@
 		}
 		.scroll {
 			@include margin(0 auto);
-			@include max-size(142px _);
+			@include max-size(142px n);
 			align-items: center;
-			display: flex;
+			display: none;
 			flex-direction: column;
+			@include bp(7) {
+				display: flex;
+			}
 			span {
-				@include margin(_ _ 24px _);
+				@include margin(n n 24px n);
 				@include font((
 					appearance: regular,
 					family: script,
@@ -105,7 +127,7 @@
 	}
 	.aktivity {
 		h2 {
-			@include margin(_ _ 14px _);
+			@include margin(n n 14px n);
 			@include font((
 				appearance: bolder,
 				family: script,
@@ -115,7 +137,7 @@
 			letter-spacing: 0;
 		}
 		h3 {
-			@include margin(_ _ 12px _);
+			@include margin(n n 12px n);
 			@include font((
 				appearance: bold,
 				family: script,
@@ -125,7 +147,7 @@
 			letter-spacing: 0;
 		}
 		p {
-			@include margin(_ _ 30px _);
+			@include margin(n n 30px n);
 			@include font((
 				appearance: regular,
 				family: script,
@@ -140,7 +162,7 @@
 	}
 	.firma {
 		h2 {
-			@include margin(_ _ 14px _);
+			@include margin(n n 14px n);
 			@include font((
 				appearance: bolder,
 				family: script,
@@ -150,7 +172,7 @@
 			letter-spacing: 0;
 		}
 		h3 {
-			@include margin(_ _ 20px _);
+			@include margin(n n 20px n);
 			@include font((
 				appearance: bold,
 				family: script,
@@ -160,7 +182,7 @@
 			letter-spacing: 0;
 		}
 		p {
-			@include margin(_ _ 30px _);
+			@include margin(n n 30px n);
 			@include font((
 				appearance: regular,
 				family: script,

@@ -21,8 +21,8 @@
         @return is-list($value);
     } @else if $unit == map {
         @return is-map($value);
-    } @else if $unit == _ {
-        @return is-_($value);
+    } @else if $unit == n {
+        @return is-n($value);
     } @else if $unit == number {
         @return is-number($value);
     } @else if $unit == px {
@@ -45,7 +45,5 @@
         @return is-vh($value);
     } @else if $unit == vw {
         @return is-vw($value);
-    } @else {
-        @return $unit == $value;
     }
 }

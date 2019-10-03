@@ -1,16 +1,28 @@
 .footer {
-	@include size(_ 100vh);
+	@include size(n 100vh);
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
+	@include bp(7) {
+		grid-template-columns: 1fr 1fr;
+	}
 	.map {
+		@include size(n 650px);
 		background-color: color(white);
+		order: 2;
 		z-index: 1;
+		@include bp(7) {
+			@include size(auto);
+			order: unset;
+		}
 	}
 	.data {
-		@include padding(54px 8%);
+		@include padding(16px 8%);
 		background-color: color(white);
+		@include bp(7) {
+			@include padding(54px 8%);
+		}
 		h2 {
-			@include margin(_ _ 14px _);
+			@include margin(n n 14px n);
 			@include font((
 				appearance: bolder,
 				family: script,
@@ -20,7 +32,7 @@
 			letter-spacing: 0;
 		}
 		p {
-			@include margin(_ _ 20px _);
+			@include margin(n n 20px n);
 			@include font((
 				appearance: bold,
 				family: script,
@@ -30,7 +42,7 @@
 			letter-spacing: 0;
 		}
 		h3 {
-			@include margin(_ _ 10px _);
+			@include margin(n n 10px n);
 			@include font((
 				appearance: bold,
 				family: script,
@@ -43,7 +55,7 @@
 			}
 		}
 		ul {
-			@include margin(_ _ 120px _);
+			@include margin(n n 120px n);
 			li {
 				@include font((
 					appearance: regular,
@@ -61,7 +73,11 @@
 		}
 		img {
 			@include margin(0 auto);
-			@include max-size(630px _)
+			@include max-size(100% n);
+			display: none;
+			@include bp(7) {
+				display: block;
+			}
 		}
 	}
 }

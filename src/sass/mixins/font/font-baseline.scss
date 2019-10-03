@@ -10,7 +10,7 @@
     $subfont: get($font appearance $appearance);
     $baseline-offset: if(get($subfont baseline offset), get($subfont baseline offset), get($font baseline offset));
 
-    @if not is-_($position) {
+    @if not is($position, n) {
         @include selector($selector) {
             position: $position;
         }
