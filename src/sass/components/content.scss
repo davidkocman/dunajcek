@@ -2,7 +2,7 @@
 	@include margin(80px n n n);
 	@include padding(54px 8%);
 	.intro {
-		@include min-size(n calc(100vh - 80px));
+		@include min-size(n calc(100vh - 160px));
 		.h {
 			@include margin(n n 16px n);
 			@include font((
@@ -190,6 +190,19 @@
 			));
 			color: #475262;
 			letter-spacing: 0;
+		}
+		.certs {
+			column-gap: 0;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			@include bp(4) {
+				column-gap: rem(60px);
+			}
+			.cert {
+				img {
+					@include max-size(100% n);
+				}
+			}
 		}
 	}
 }

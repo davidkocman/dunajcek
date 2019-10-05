@@ -1,0 +1,43 @@
+.nav-toggle {
+	align-items: center;
+	display: flex;
+	.mobile-nav & {
+		@include absolute(20px 20px n n);
+	}
+	@include bp(7) {
+		display: none;
+	}
+	span {
+		@include margin(n 8px n n);
+		@include font((
+			appearance: regular,
+			family: script,
+			size: 12px
+		));
+		color: #23344e;
+		letter-spacing: 0;
+	}
+	.close {
+		@include size(26px);
+		align-items: center;
+		border: 2px solid color(black);
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		position: relative;
+		&::before,
+		&::after {
+			@include absolute(n);
+			@include size(12px 2px);
+			background-color: color(black);
+			content: '';
+			display: block;
+		}
+		&::before {
+			transform: rotate(-45deg);
+		}
+		&::after {
+			transform: rotate(45deg);
+		}
+	}
+}

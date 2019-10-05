@@ -1,0 +1,61 @@
+.mobile-nav {
+	@include fixed(0 0 0 0, 3);
+	@include padding(n 40px);
+	@include size(100%);
+	background-color: #f8fbff;
+	opacity: 0;
+	transition: opacity speed(fast) timing(default);
+	visibility: hidden;
+		.menu-visible & {
+		opacity: 1;
+		visibility: visible;
+	}
+	.clouds {
+		@include absolute(0 n n 0);
+	}
+	&__items {
+		@include padding(190px n n);
+		.links {
+			@include margin(n n 38px n);
+			@include padding(n 20px 28px);
+			border-bottom: 1px solid #d8d8d8;
+			color: color(bold);
+			list-style-type: disc;
+			li {
+				@include font((
+					appearance: bolder,
+					family: script,
+					size: 20px 48px,
+				));
+				letter-spacing: 1px;
+				text-transform: uppercase;
+			}
+		}
+		.h {
+			@include margin(n n 6px n);
+			@include font((
+				appearance: bold,
+				family: script,
+				size: 18px 28px,
+			));
+			color: color(bold);
+		}
+		ul {
+			@include margin(n n 120px n);
+			li {
+				@include font((
+					appearance: regular,
+					family: script,
+					size: 16px 36px,
+				));
+				color: color(regular);
+				letter-spacing: 0;
+				span {
+					@include font((
+						appearance: bold,
+					))
+				}
+			}
+		}
+	}
+}
