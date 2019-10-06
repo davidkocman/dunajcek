@@ -3,6 +3,7 @@
 	@include padding(54px 8%);
 	.intro {
 		@include min-size(n calc(100vh - 160px));
+		position: relative;
 		.h {
 			@include margin(n n 16px n);
 			@include font((
@@ -84,11 +85,13 @@
 			}
 		}
 		.scroll {
+			@include absolute(n n 0 50%);
 			@include margin(0 auto);
 			@include max-size(142px n);
 			align-items: center;
 			display: none;
 			flex-direction: column;
+			transform: translateX(-50%);
 			@include bp(7) {
 				display: flex;
 			}
