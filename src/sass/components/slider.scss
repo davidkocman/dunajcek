@@ -20,6 +20,19 @@
 		img {
 			@include size(100% n);
 		}
+		button {
+			@include absolute(50% n n 50%);
+			transform: translate(-50%, -50%);
+			&:focus,
+			&:hover {
+				svg {
+					transform: scale(1.2);
+				}
+			}
+			svg {
+				transition: all speed(fast) timing(default);
+			}
+		}
 	}
 	&.mobile {
 		.swiper-pagination {

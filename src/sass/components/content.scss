@@ -1,6 +1,9 @@
 .content {
-	@include margin(80px n n n);
-	@include padding(54px 8%);
+	@include margin(96px n n n);
+	@include padding(54px 20px);
+	@include bp(7) {
+		@include padding(54px 12%);
+	}
 	.intro {
 		@include min-size(n calc(100vh - 160px));
 		position: relative;
@@ -42,13 +45,14 @@
 			&.bold {
 				@include font((
 					appearance: bold,
+					size: 20px 36px,
 				));
 				color: color(bold);
 			}
 		}
 		.swiper-container {
 			&.mobile {
-				@include margin(0 auto);
+				@include margin(32px auto);
 				display: block;
 				@include bp(12) {
 					display: none;
@@ -56,6 +60,7 @@
 			}
 		}
 		.icons {
+			@include margin(32px n n n);
 			column-gap: rem(40px);
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
@@ -85,7 +90,7 @@
 			}
 		}
 		.scroll {
-			@include absolute(n n 0 50%);
+			@include absolute(n n 20px 50%);
 			@include margin(0 auto);
 			@include max-size(142px n);
 			align-items: center;
@@ -126,13 +131,18 @@
 				
 				}
 			}
+			span,
+			img {
+				pointer-events: none;
+			}
 		}
 	}
 	.aktivity {
+		@include margin(80px n n n);
 		h2 {
 			@include margin(n n 14px n);
 			@include font((
-				appearance: bolder,
+				appearance: bold,
 				family: script,
 				size: 30px,
 			));
@@ -167,7 +177,7 @@
 		h2 {
 			@include margin(n n 14px n);
 			@include font((
-				appearance: bolder,
+				appearance: bold,
 				family: script,
 				size: 30px,
 			));
@@ -179,7 +189,7 @@
 			@include font((
 				appearance: bold,
 				family: script,
-				size: 16px 34px,
+				size: 20px 36px,
 			));
 			color: color(bold);
 			letter-spacing: 0;

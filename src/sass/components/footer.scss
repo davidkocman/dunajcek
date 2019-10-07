@@ -2,7 +2,7 @@
 	@include size(n 100vh);
 	display: grid;
 	grid-template-columns: 1fr;
-	@include bp(7) {
+	@include bp(12) {
 		grid-template-columns: 1fr 1fr;
 	}
 	.map {
@@ -10,21 +10,21 @@
 		background-color: color(white);
 		order: 2;
 		z-index: 1;
-		@include bp(7) {
+		@include bp(12) {
 			@include size(auto);
 			order: unset;
 		}
 	}
 	.data {
-		@include padding(16px 8%);
+		@include padding(16px 20px);
 		background-color: color(white);
 		@include bp(7) {
-			@include padding(54px 8%);
+			@include padding(54px 12%);
 		}
 		h2 {
 			@include margin(n n 14px n);
 			@include font((
-				appearance: bolder,
+				appearance: bold,
 				family: script,
 				size: 30px,
 			));
@@ -36,7 +36,7 @@
 			@include font((
 				appearance: bold,
 				family: script,
-				size: 16px 34px,
+				size: 20px 36px,
 			));
 			color: color(bold);
 			letter-spacing: 0;
@@ -68,6 +68,12 @@
 					@include font((
 						appearance: bold,
 					))
+				}
+				a {
+					&:focus,
+					&:hover {
+						text-decoration: underline;
+					}
 				}
 			}
 		}
