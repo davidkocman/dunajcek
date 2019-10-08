@@ -90,7 +90,7 @@ addEventListenerList(navToggle, 'click', function (e) {
 */
 addEventListenerList(mobileNodes, 'click', function (e) {
 	e.preventDefault();
-	document.body.classList.remove('menu-visible');
+	document.getElementsByTagName('html')[0].classList.remove('menu-visible');
 });
 
 /*
