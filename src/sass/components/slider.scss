@@ -6,8 +6,11 @@
 	@include bp(12) {
 		display: block;
 	}
-	img {
+	object {
 		@include min-size(n 100vh);
+		img {
+			@include min-size(n 100vh);
+		}
 	}
 	.swiper-container {
 		@include size(100% 100vh);	
@@ -17,8 +20,11 @@
 	@include size(100% n);
 	position: relative;
 	.swiper-slide {
-		img {
+		object {
 			@include size(100% n);
+			img {
+				@include size(100% n);
+			}
 		}
 		button {
 			@include absolute(50% n n 50%);

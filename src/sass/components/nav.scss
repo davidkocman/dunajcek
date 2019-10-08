@@ -1,16 +1,18 @@
 nav {
 	@include fixed(0 0 n 0, 2);
-	@include padding(n 4%);
+	@include padding(n 20px);
 	@include size(auto 80px);
 	align-items: center;
-	background-color: color(white);
+	background-color: color(background);
 	box-shadow: 0 10px 20px 0 rgba(227, 230, 237, 0.6);
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 	@include bp(7) {
+		@include padding(n 12%);
 		justify-content: center;
 	}
 	@include bp(12) {
+		@include padding(n 6%);
 		@include fixed(0 0 n 50%, 1);
 	}
 	.element {
@@ -31,6 +33,14 @@ nav {
 			&::after {
 				@include absolute(80px n -80px n);
 			}
+		}
+	}
+	.logo {
+		@include bp(7) {
+			display: none;
+		}
+		img {
+			@include max-size(126px n);
 		}
 	}
 	ul {

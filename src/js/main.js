@@ -57,7 +57,7 @@ sr.reveal(certs, {
 
 var mySwiper = new Swiper('.swiper-container', {
 	autoplay: {
-		delay: 5000,
+		delay: 3000,
 	},
 	direction: 'horizontal',
 	// effect: 'fade',

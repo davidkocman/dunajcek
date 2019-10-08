@@ -61,7 +61,7 @@
 		}
 		.icons {
 			@include margin(32px n n n);
-			column-gap: rem(40px);
+			grid-gap: rem(40px);
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
 			@include bp(6) {
@@ -118,15 +118,15 @@
 					60%,
 					80%,
 					100% {
-						-webkit-transform: translateY(0);
+						transform: translateY(0);
 					}
 				
 					20% {
-						-webkit-transform: translateY(-5px);
+						transform: translateY(-5px);
 					}
 				
 					40% {
-						-webkit-transform: translateY(20px);
+						transform: translateY(20px);
 					}
 				
 				}
@@ -138,7 +138,7 @@
 		}
 	}
 	.aktivity {
-		@include margin(80px n n n);
+		@include margin(30px n n n);
 		h2 {
 			@include margin(n n 14px n);
 			@include font((
@@ -203,6 +203,15 @@
 			));
 			color: #475262;
 			letter-spacing: 0;
+			a {
+				@include font((
+					appearance: bold,
+				));
+				&:focus,
+				&:hover {
+					text-decoration: underline;
+				}
+			}
 		}
 		.certs {
 			column-gap: 0;
@@ -212,8 +221,15 @@
 				column-gap: rem(60px);
 			}
 			.cert {
-				img {
+				object {
 					@include max-size(100% n);
+					img {
+						@include max-size(100% n);
+					}
+				}
+				&:nth-child(2) {
+					display: grid;
+					justify-content: flex-end;
 				}
 			}
 		}
