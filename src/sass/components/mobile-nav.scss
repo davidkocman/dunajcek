@@ -1,8 +1,10 @@
 .mobile-nav {
 	@include fixed(0 0 0 0, 3);
+	@include min-size(n 100%);
 	@include padding(n 40px);
-	@include size(100%);
+	@include size(100% n);
 	background-color: #f8fbff;
+	overflow-y: auto;
 	opacity: 0;
 	transition: opacity speed(fast) timing(default);
 	visibility: hidden;

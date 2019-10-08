@@ -82,7 +82,7 @@ var mySwiper = new Swiper('.swiper-container', {
 */
 addEventListenerList(navToggle, 'click', function (e) {
 	e.preventDefault();
-	document.body.classList.toggle('menu-visible');
+	document.getElementsByTagName('html')[0].classList.toggle('menu-visible');
 });
 
 /*

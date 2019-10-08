@@ -1,8 +1,10 @@
-body {
-	background-color: color(background);
+html {
 	&.menu-visible {
 		overflow: hidden;
 	}
+}
+body {
+	background-color: color(background);
 }
 body,
 html {
