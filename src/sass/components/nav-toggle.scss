@@ -2,7 +2,7 @@
 	align-items: center;
 	display: flex;
 	.mobile-nav & {
-		@include absolute(20px 20px n n);
+		@include absolute(27px 20px n n);
 	}
 	@include bp(7) {
 		display: none;

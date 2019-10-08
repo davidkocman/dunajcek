@@ -31,12 +31,17 @@ function addActiveClass(nodeList, target) {
 //	Scrolls to nav item corresponding element
 */
 function scrollToHash(hash) {
-	document.getElementById(hash).scrollIntoView({
-		behavior: 'smooth',
-		block: 'center'
+	var position = document.querySelector(hash).getBoundingClientRect().top;
+	window.scrollBy({
+		top: position - 90,
+		left: 0,
+		behavior: "smooth"
 	});
 }
 
+/*
+//	Reveal elements when in viewport
+*/
 window.sr = ScrollReveal();
 sr.reveal(icons, {
 	delay: 500,
@@ -60,26 +65,11 @@ var mySwiper = new Swiper('.swiper-container', {
 		delay: 3000,
 	},
 	direction: 'horizontal',
-	// effect: 'fade',
-	// fadeEffect: {
-	// 	crossFade: true
-	// },
 	loop: true,
 	navigation: {
 		nextEl: '.next',
 		prevEl: '.prev',
 	},
-	// on: {
-	// 	transitionEnd: function () {
-	// 		this.params.speed = 2000;
-	// 	},
-	// 	transitionStart: function () {
-	// 		this.params.speed = 2000;
-	// 	},
-	// 	touchStart: function () {
-	// 		this.params.speed = 400;
-	// 	}
-	// },
 	pagination: {
 		el: '.swiper-pagination',
 		type: 'fraction'
@@ -87,18 +77,28 @@ var mySwiper = new Swiper('.swiper-container', {
 	speed: 400
 });
 
+/*
+//	Adds click event for navigation toggle
+*/
 addEventListenerList(navToggle, 'click', function (e) {
 	e.preventDefault();
 	document.body.classList.toggle('menu-visible');
 });
 
+/*
+//	Adds click event for mobile menu links
+*/
 addEventListenerList(mobileNodes, 'click', function (e) {
 	e.preventDefault();
 	document.body.classList.remove('menu-visible');
 });
 
+/*
+//	Adds click event for href="#xyz" atribute elements
+//	sets active class
+*/
 addEventListenerList(ids, 'click', function (e) {
-	var hash = e.target.hash.substr(1);
+	var hash = e.target.getAttribute("href");
 	e.preventDefault();
 	addActiveClass(ids, e.target);
 	scrollToHash(hash, e.target);
