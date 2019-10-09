@@ -1,0 +1,18 @@
+.video-wrapper {
+	@include fixed(0, 3);
+	@include size(100%);
+	align-items: center;
+	background-color: color(black .5);
+	display: flex;
+	justify-content: center;
+	opacity: 0;
+	transition: all speed(fast) timing(default);
+	visibility: hidden;
+	&.visible {
+		opacity: 1;
+		visibility: visible;
+	}
+	video {
+		@include size(80% auto);
+	}
+}

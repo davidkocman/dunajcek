@@ -1,9 +1,13 @@
+/*
+//	List nodes
+*/
 var icons = document.querySelectorAll('.icon'),
 	grahics = document.querySelectorAll('.graphic'),
 	certs = document.querySelectorAll('.cert'),
 	navToggle = document.querySelectorAll('.nav-toggle'),
 	mobileNodes = document.querySelectorAll('.mobile-nav__items ul li a'),
-	ids = document.querySelectorAll('a[href^="#"]');
+	ids = document.querySelectorAll('a[href^="#"]'),
+	play = document.querySelectorAll('.video');
 
 /*
 //	Adds event listener to nodeList
@@ -30,7 +34,7 @@ function addActiveClass(nodeList, target) {
 /*
 //	Scrolls to nav item corresponding element
 */
-function scrollToHash(hash) {
+function scrollToSection(hash) {
 	var position = document.querySelector(hash).getBoundingClientRect().top;
 	window.scrollBy({
 		top: position - 90,
@@ -60,12 +64,9 @@ sr.reveal(certs, {
 	distance: '40px'
 });
 
-var mySwiper = new Swiper('.swiper-container', {
-	autoplay: {
-		delay: 3000,
-	},
+var swiper = new Swiper('.swiper-container', {
 	direction: 'horizontal',
-	loop: true,
+	loop: false,
 	navigation: {
 		nextEl: '.next',
 		prevEl: '.prev',
@@ -94,6 +95,22 @@ addEventListenerList(mobileNodes, 'click', function (e) {
 });
 
 /*
+//	Adds click event for show-hide-video
+*/
+addEventListenerList(play, 'click', function (e) {
+	e.preventDefault();
+	console.log(play);
+	var wrapper = document.querySelector('.video-wrapper');
+	var video = document.getElementById('video');
+	wrapper.classList.toggle('visible');
+	if (wrapper.classList.contains('visible') && video.paused) {
+		video.play();
+	} else {
+		video.pause();
+	}
+});
+
+/*
 //	Adds click event for href="#xyz" atribute elements
 //	sets active class
 */
@@ -101,5 +118,5 @@ addEventListenerList(ids, 'click', function (e) {
 	var hash = e.target.getAttribute("href");
 	e.preventDefault();
 	addActiveClass(ids, e.target);
-	scrollToHash(hash, e.target);
+	scrollToSection(hash, e.target);
 });
