@@ -1,10 +1,10 @@
 {
-	"name": "Dunajček",
-	"short_name": "dunajcek",
+	"name": "Súkromná materská škôlka - Dunajček",
+	"short_name": "Dunajček",
 	"start_url": "/",
 	"orientation": "portrait-primary",
 	"lang": "sk",
-	"description": "Súkromná materská škôlka",
+	"description": "Škôlka rodinného typu v Dunajskej Lužnej, pre detičky vo veku od 2,5 - 6 rokov so zameraním na nemecký jazyk a umenie.",
 	"icons": [{
 		"src": "media/images/favicons/favicon-32x32.png",
 		"sizes": "32x32",
